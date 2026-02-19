@@ -1,0 +1,29 @@
+.app__findus-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.app__findus-card {
+  background: rgba(220, 202, 135, 0.05);
+  border: 1px solid rgba(220, 202, 135, 0.2);
+  border-radius: 4px;
+  padding: 1.2rem 1.5rem;
+  transition: border-color 0.3s ease;
+}
+
+.app__findus-card:hover {
+  border-color: rgba(220, 202, 135, 0.5);
+}
+
+.app__findus-card .p__cormorant {
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+@media screen and (max-width: 650px) {
+  .app__findus-cards {
+    margin-top: 2rem;
+  }
+}
