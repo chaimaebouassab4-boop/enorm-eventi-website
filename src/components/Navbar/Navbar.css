@@ -42,6 +42,11 @@
     align-items: center;
 }
 
+.app__navbar-actions {
+    display: flex;
+    align-items: center;
+}
+
 .app__navbar-login a {
     margin: 0 1rem;
     text-decoration: none;
@@ -102,6 +107,10 @@
     color: var(--color-white);
 }
 
+.app__navbar-controls--overlay {
+    margin-top: 1.5rem;
+}
+
 @media screen and (min-width: 2000px) {
     .app__navbar-logo img {
         width: 210px;
@@ -110,6 +119,10 @@
 
 @media screen and (max-width: 1150px) {
     .app__navbar-links {
+        display: none;
+    }
+
+    .app__navbar-login {
         display: none;
     }
 
@@ -123,8 +136,8 @@
         padding: 1rem;
     }
 
-    .app__navbar-login {
-        display: none;
+    .app__navbar-actions {
+        display: flex;
     }
 
     .app__navbar-logo img {

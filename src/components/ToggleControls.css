@@ -1,0 +1,46 @@
+.app__navbar-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-left: 1rem;
+}
+
+.app__control-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.6rem;
+  border: 1px solid var(--color-golden);
+  background: transparent;
+  color: var(--color-white);
+  font-family: var(--font-alt);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.app__control-btn:hover {
+  background: var(--color-golden);
+  color: #0c0c0c;
+}
+
+.app__control-btn:focus-visible {
+  outline: 2px solid var(--color-golden);
+  outline-offset: 2px;
+}
+
+@media screen and (max-width: 1150px) {
+  .app__navbar-controls {
+    margin-left: 0;
+    margin-right: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .app__control-btn {
+    font-size: 0.72rem;
+    padding: 0.3rem 0.45rem;
+  }
+}

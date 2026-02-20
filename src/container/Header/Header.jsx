@@ -1,25 +1,28 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { SubHeading } from '../../components';
 import { images } from '../../constants';
 import './Header.css';
 
-const Header = () => (
-  <div className="app__header app__wrapper section__padding" id="home">
-    <div className="app__wrapper_info">
-      <SubHeading title="Bar Mobile Vintage & Traiteur Premium" />
-      <h1 className="app__header-h1">La Clé de<br />l'Élégance<br />Événementielle</h1>
-      <p className="p__opensans" style={{ margin: '2rem 0' }}>
-        Nous transformons chaque événement en une expérience unique et raffinée.
-        Grâce à notre bar mobile vintage au design élégant, nous apportons charme,
-        prestige et convivialité directement sur le lieu de votre réception.
-      </p>
-      <button type="button" className="custom__button">Demander un Devis</button>
-    </div>
+const Header = () => {
+  const { t } = useTranslation();
 
-    <div className="app__wrapper_img">
-      <img src={images.welcome} alt="ENORM EVENTI Bar Mobile" />
+  return (
+    <div className="app__header app__wrapper section__padding" id="home">
+      <div className="app__wrapper_info">
+        <SubHeading title={t('header.subtitle')} />
+        <h1 className="app__header-h1">{t('header.title')}</h1>
+        <p className="p__opensans" style={{ margin: '2rem 0' }}>
+          {t('header.description')}
+        </p>
+        <button type="button" className="custom__button">{t('header.cta')}</button>
+      </div>
+
+      <div className="app__wrapper_img">
+        <img src={images.welcome} alt="ENORM EVENTI Bar Mobile" />
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default Header;

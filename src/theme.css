@@ -1,0 +1,67 @@
+body {
+  background: var(--bg);
+  color: var(--text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.theme-dark {
+  --bg: #0c0c0c;
+  --text: #ffffff;
+  --muted: #aaaaaa;
+  --card: #171717;
+  --gold: #dcca87;
+
+  --color-golden: var(--gold);
+  --color-black: #0c0c0c;
+  --color-gray: #545454;
+  --color-crimson: #f5efdb;
+  --color-grey: var(--muted);
+  --color-white: var(--text);
+}
+
+body.theme-light {
+  --bg: #f5efe3;
+  --text: #1a1a1a;
+  --muted: #575757;
+  --card: #fffaf0;
+  --gold: #8f6a1f;
+
+  --color-golden: var(--gold);
+  --color-black: #f5efe3;
+  --color-gray: #6a6a6a;
+  --color-crimson: #d9be73;
+  --color-grey: var(--muted);
+  --color-white: var(--text);
+}
+
+body.theme-light .app__bg {
+  color: #ffffff;
+}
+
+body.theme-light .app__bg .p__opensans,
+body.theme-light .app__bg .p__cormorant {
+  color: #ffffff;
+}
+
+body.theme-light .app__footer,
+body.theme-light .app__footerOverlay-black,
+body.theme-light .app__newsletter,
+body.theme-light .app__newsletter-input input {
+  background: #0c0c0c;
+}
+
+body.theme-light .app__footer,
+body.theme-light .app__footer .p__opensans,
+body.theme-light .app__footer .app__footer-headtext,
+body.theme-light .app__footer .app__footer-logo-text,
+body.theme-light .app__footer .app__footer-links_icons svg,
+body.theme-light .app__newsletter .p__opensans,
+body.theme-light .app__newsletter .headtext__cormorant,
+body.theme-light .app__newsletter-input input {
+  color: #ffffff;
+}
+
+.app {
+  background: var(--bg);
+  color: var(--text);
+}

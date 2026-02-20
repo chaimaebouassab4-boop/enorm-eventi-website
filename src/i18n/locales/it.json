@@ -1,0 +1,39 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "Chi siamo",
+    "services": "Servizi",
+    "awards": "Riconoscimenti",
+    "contact": "Contatti",
+    "login": "Accedi",
+    "book": "Prenota"
+  },
+  "header": {
+    "subtitle": "Bar Mobile Vintage & Catering Premium",
+    "title": "La chiave dell'Eleganza per i tuoi eventi",
+    "description": "Trasformiamo ogni evento in un'esperienza unica e raffinata. Con il nostro bar mobile vintage dal design elegante, portiamo fascino, prestigio e convivialita direttamente nella tua location.",
+    "cta": "Richiedi un preventivo"
+  },
+  "gallery": {
+    "subtitle": "I nostri eventi",
+    "title": "Momenti d'Eccellenza",
+    "description": "Scopri alcuni momenti catturati durante i nostri eventi...",
+    "cta": "Richiedi un preventivo"
+  },
+  "chef": {
+    "subtitle": "La nostra visione",
+    "title": "L'eleganza al cuore dei tuoi eventi",
+    "quote": "Crediamo che ogni evento meriti un tocco unico di raffinatezza e prestigio.",
+    "description": "Da ENORM EVENTI trasformiamo i tuoi ricevimenti in esperienze memorabili grazie al nostro bar mobile vintage, ai servizi premium e all'attenzione per ogni dettaglio. Ogni proposta e pensata per creare un'atmosfera chic, calda e indimenticabile.",
+    "signatureRole": "Bar Mobile & Servizio Premium"
+  },
+  "findus": {
+    "cta": "Richiedi un preventivo"
+  },
+  "toggles": {
+    "themeDark": "Attiva il tema scuro",
+    "themeLight": "Attiva il tema chiaro",
+    "langToFr": "Passa il sito in francese",
+    "langToIt": "Passa il sito in italiano"
+  }
+}
