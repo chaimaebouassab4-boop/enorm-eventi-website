@@ -42,3 +42,83 @@
         line-height: 70px;
     }
 }
+/* ── Ajoute à la fin de ton Header.css existant ── */
+
+/* Conteneur de la bande */
+.app__header-gallery {
+  width: 100%;
+  overflow: hidden;
+  background: #0c0c0c;
+  padding: 1.5rem 0;
+  /* Fondu sur les bords gauche/droite */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+}
+
+/* La piste qui défile */
+.app__header-gallery_track {
+  display: flex;
+  gap: 1.2rem;
+  width: max-content;
+  animation: gallery__scroll 18s linear infinite;
+}
+
+.app__header-gallery_track:hover {
+  animation-play-state: paused; /* pause au survol */
+}
+
+/* Chaque image */
+.app__header-gallery_item {
+  flex-shrink: 0;
+  width: 280px;
+  height: 200px;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid rgba(220, 202, 135, 0.15);
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.app__header-gallery_item:hover {
+  border-color: rgba(220, 202, 135, 0.6);
+  transform: scale(1.03);
+}
+
+.app__header-gallery_item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Animation de défilement infini */
+@keyframes gallery__scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ── Responsive ── */
+@media screen and (max-width: 768px) {
+  .app__header-gallery_item {
+    width: 220px;
+    height: 160px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .app__header-gallery_item {
+    width: 170px;
+    height: 130px;
+  }
+}

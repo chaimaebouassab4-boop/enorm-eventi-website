@@ -1,5 +1,6 @@
 import React from 'react';
 import { FiFacebook, FiTwitter, FiInstagram } from 'react-icons/fi';
+import { MdLocationOn, MdEmail, MdWhatsapp } from 'react-icons/md';
 import { FooterOverlay, Newsletter } from '../../components';
 import { images } from '../../constants';
 import './Footer.css';
@@ -12,9 +13,21 @@ const Footer = () => (
     <div className="app__footer-links">
       <div className="app__footer-links_contact">
         <h1 className="app__footer-headtext">Contactez-Nous</h1>
-        <p className="p__opensans">📍 ITALIE & International</p>
-        <p className="p__opensans">📧 contact@enormeventi.com</p>
-        <p className="p__opensans">📱 Disponible sur WhatsApp</p>
+
+        <div className="app__footer-contact-item">
+          <MdLocationOn color="#dcca87" size={18} />
+          <p className="p__opensans">Italie &amp; International</p>
+        </div>
+
+        <div className="app__footer-contact-item">
+          <MdEmail color="#dcca87" size={18} />
+          <p className="p__opensans">contact@enormeventi.com</p>
+        </div>
+
+        <div className="app__footer-contact-item">
+          <MdWhatsapp color="#dcca87" size={18} />
+          <p className="p__opensans">Disponible sur WhatsApp</p>
+        </div>
       </div>
 
       <div className="app__footer-links_logo">
@@ -32,7 +45,7 @@ const Footer = () => (
 
       <div className="app__footer-links_work">
         <h1 className="app__footer-headtext">Nos Services</h1>
-        <p className="p__opensans">Bar à Vin & Champagne</p>
+        <p className="p__opensans">Bar à Vin &amp; Champagne</p>
         <p className="p__opensans">Bar Mobile Événementiel</p>
         <p className="p__opensans">Service Premium</p>
         <p className="p__opensans">Devis Personnalisé</p>

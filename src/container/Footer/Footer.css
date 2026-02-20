@@ -103,3 +103,16 @@
         width: 80%;
     }
 }
+/* Ajoute ces styles à la fin de ton Footer.css existant */
+
+.app__footer-contact-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0.5rem 0;
+}
+
+.app__footer-contact-item .p__opensans {
+  margin: 0;
+}

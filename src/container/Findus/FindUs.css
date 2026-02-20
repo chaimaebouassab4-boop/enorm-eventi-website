@@ -1,25 +1,53 @@
+/* ── Ajoute / remplace dans FindUs.css ── */
+
 .app__findus-cards {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  margin-top: 1rem;
+  gap: 1.2rem;
 }
 
 .app__findus-card {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 1rem;
   background: rgba(220, 202, 135, 0.05);
-  border: 1px solid rgba(220, 202, 135, 0.2);
+  border: 1px solid rgba(220, 202, 135, 0.15);
   border-radius: 4px;
-  padding: 1.2rem 1.5rem;
+  padding: 1rem 1.2rem;
   transition: border-color 0.3s ease;
 }
 
 .app__findus-card:hover {
-  border-color: rgba(220, 202, 135, 0.5);
+  border-color: rgba(220, 202, 135, 0.45);
+}
+
+.app__findus-card_icon {
+  margin-top: 2px;
+  flex-shrink: 0;
 }
 
 .app__findus-card .p__cormorant {
-  margin-bottom: 0.5rem;
   display: block;
+  margin-bottom: 0.25rem;
+}
+
+.app__findus-card .p__opensans {
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Images empilées verticalement */
+.app__wrapper_img {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.app__wrapper_img img {
+  width: 100%;
+  border-radius: 4px;
+  object-fit: cover;
 }
 
 @media screen and (max-width: 650px) {
