@@ -175,3 +175,144 @@
     line-height: 70px;
   }
 }
+/* ═══════════════════════════════════════════════════════
+   ENORM EVENTI — Scroll Animations
+   Colle TOUT ce contenu à la fin de src/App.css
+   ═══════════════════════════════════════════════════════ */
+
+/* ── 1. État initial : invisible avant d'entrer dans le viewport ── */
+.reveal {
+  opacity: 0;
+  transition: opacity 0.75s ease, transform 0.75s ease;
+}
+
+.reveal.from-left   { transform: translateX(-60px); }
+.reveal.from-right  { transform: translateX(60px); }
+.reveal.from-bottom { transform: translateY(50px); }
+.reveal.zoom-in     { transform: scale(0.88); }
+
+/* ── 2. État final : visible (classe ajoutée par JS) ── */
+.reveal.visible {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* ── 3. Délais en cascade ── */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+.delay-5 { transition-delay: 0.5s; }
+.delay-6 { transition-delay: 0.6s; }
+
+/* ══════════════════════════════════════════════════════
+   HOVER EFFECTS — boutons, cards, images, icônes
+   ══════════════════════════════════════════════════════ */
+
+/* Navbar slide-in au chargement */
+.app__navbar {
+  animation: navSlideDown 0.6s ease forwards;
+}
+@keyframes navSlideDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Boutons */
+.custom__button {
+  transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+}
+.custom__button:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 8px 28px rgba(220, 202, 135, 0.3);
+}
+
+/* Cards FindUs */
+.app__findus-card {
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+.app__findus-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.45);
+  border-color: rgba(220, 202, 135, 0.5) !important;
+}
+
+/* Images wrapper */
+.app__wrapper_img img {
+  transition: transform 0.5s ease, filter 0.4s ease !important;
+}
+.app__wrapper_img img:hover {
+  transform: scale(1.04);
+  filter: brightness(1.12);
+}
+
+/* Awards */
+.app__laurels_awards-card {
+  transition: transform 0.3s ease !important;
+}
+.app__laurels_awards-card:hover {
+  transform: translateX(8px);
+}
+
+/* Menu items */
+.app__menuitem {
+  transition: transform 0.25s ease !important;
+}
+.app__menuitem:hover {
+  transform: translateX(6px);
+}
+
+/* Footer social icons */
+.app__footer-links_icons svg {
+  transition: transform 0.25s ease, color 0.25s ease !important;
+  cursor: pointer;
+}
+.app__footer-links_icons svg:hover {
+  transform: scale(1.35) translateY(-3px);
+  color: #dcca87 !important;
+}
+
+/* Gallery strip items */
+.app__header-gallery_item {
+  transition: transform 0.35s ease, border-color 0.35s ease !important;
+}
+.app__header-gallery_item:hover {
+  transform: scale(1.06);
+  border-color: rgba(220, 202, 135, 0.7) !important;
+}
+/* ══════════════════════════════════════════════════════
+   THÈME CLAIR GLOBAL — Ajoute à la fin de App.css
+   ══════════════════════════════════════════════════════ */
+
+/* ── Navbar thème clair ── */
+.app__navbar {
+  background: rgba(253, 248, 240, 0.97) !important;
+  backdrop-filter: blur(10px) !important;
+  border-bottom: 1px solid rgba(155, 110, 40, 0.15) !important;
+}
+
+.app__navbar-logo-text {
+  color: #5c3d1e !important;
+}
+
+.app__navbar-links li a,
+.app__navbar-login a {
+  color: #6b4e2a !important;
+  transition: color 0.25s ease !important;
+}
+
+.app__navbar-links li a:hover,
+.app__navbar-login a:hover {
+  color: #8b5e2a !important;
+}
+
+.app__navbar-login div {
+  background: rgba(155, 110, 40, 0.3) !important;
+}
+
+/* ── Bouton Réserver navbar ── */
+.app__navbar-login a:last-child {
+  border: 1px solid rgba(139, 94, 42, 0.4) !important;
+  padding: 0.4rem 1rem !important;
+  border-radius: 3px !important;
+}

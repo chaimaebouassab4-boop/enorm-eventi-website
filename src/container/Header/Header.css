@@ -1,124 +1,259 @@
-.app__header {
-    background-color: var(--color-black);
+/* ══════════════════════════════════════════════════════
+   HEADER — Thème Clair & Élégant
+   Remplace TOUT le contenu de Header.css
+   ══════════════════════════════════════════════════════ */
+
+/* ── Override du fond sombre global pour le header ── */
+#home {
+  background: linear-gradient(135deg, #fdf8f0 0%, #f5ede0 40%, #ede0cc 100%) !important;
+  position: relative;
+  overflow: hidden;
 }
 
+/* Texture subtile en arrière-plan */
+#home::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 15% 50%, rgba(180, 140, 80, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 85% 20%, rgba(180, 140, 80, 0.06) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+/* ── Titre principal — taille réduite et équilibrée ── */
 .app__header-h1 {
-    font-family: var(--font-base);
-    color: var(--color-golden);
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    text-transform: capitalize;
-    line-height: 117px;
-    font-size: 90px;
+  font-family: 'Cormorant Upright', serif !important;
+  font-size: clamp(2.4rem, 4.5vw, 4rem) !important; /* adaptatif, jamais trop grand */
+  font-weight: 700 !important;
+  line-height: 1.15 !important;
+  color: #5c3d1e !important;         /* brun chaud profond */
+  letter-spacing: 0.01em !important;
+  margin: 1rem 0 !important;
 }
 
-.app__header-img img {
-    width: 80%;
+/* ── Sous-titre spoon ── */
+#home .p__cormorant,
+#home .subheading__cormorant {
+  color: #9a7040 !important;
 }
 
-@media screen and (min-width: 2000px) {
-    .app__header-h1 {
-        font-size: 180px;
-        line-height: 210px;
-    }
+/* ── Texte description ── */
+#home .p__opensans {
+  color: #6b4e2a !important;
+  font-size: 1rem !important;
+  line-height: 1.75 !important;
+  max-width: 480px;
 }
 
-@media screen and (max-width: 1150px) {
-    .app__header-h1 {
-        font-size: 90px;
-    }
+/* ── Badges services ── */
+.app__header-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
 }
 
-@media screen and (max-width: 650px) {
-    .app__header-h1 {
-        font-size: 70px;
-        line-height: 87px;
-    }
+.app__header-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: rgba(155, 110, 40, 0.1);
+  border: 1px solid rgba(155, 110, 40, 0.3);
+  color: #7a5020;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 0.35rem 0.85rem;
+  border-radius: 50px;
+  transition: background 0.25s ease, border-color 0.25s ease;
 }
 
-@media screen and (max-width: 450px) {
-    .app__header-h1 {
-        font-size: 50px;
-        line-height: 70px;
-    }
+.app__header-badge:hover {
+  background: rgba(155, 110, 40, 0.2);
+  border-color: rgba(155, 110, 40, 0.6);
 }
-/* ── Ajoute à la fin de ton Header.css existant ── */
 
-/* Conteneur de la bande */
+/* ── Bouton CTA adapté au thème clair ── */
+#home .custom__button {
+  background: #8b5e2a !important;
+  color: #fdf8f0 !important;
+  border: 2px solid #8b5e2a !important;
+  padding: 0.75rem 2rem !important;
+  font-size: 0.9rem !important;
+  letter-spacing: 0.08em !important;
+  border-radius: 3px !important;
+  transition: all 0.3s ease !important;
+}
+
+#home .custom__button:hover {
+  background: transparent !important;
+  color: #8b5e2a !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 8px 25px rgba(139, 94, 42, 0.25) !important;
+}
+
+/* ── Cadre image droite ── */
+.app__header-img-frame {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+}
+
+.app__header-img-frame img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(100, 60, 10, 0.2);
+  display: block;
+}
+
+/* Ligne décorative dorée derrière l'image */
+.app__header-img-frame::before {
+  content: '';
+  position: absolute;
+  top: 16px;
+  right: -16px;
+  width: 100%;
+  height: 100%;
+  border: 2px solid rgba(155, 110, 40, 0.35);
+  border-radius: 12px;
+  z-index: 0;
+}
+
+.app__header-img-frame img {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Badge flottant sur l'image ── */
+.app__header-floating-badge {
+  position: absolute;
+  bottom: -18px;
+  left: -18px;
+  z-index: 2;
+  background: #8b5e2a;
+  color: #fdf8f0;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(139, 94, 42, 0.4);
+  border: 3px solid #fdf8f0;
+}
+
+.app__header-floating-badge_num {
+  font-family: 'Cormorant Upright', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.app__header-floating-badge_txt {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ── Bande photos défilantes — thème clair ── */
 .app__header-gallery {
   width: 100%;
   overflow: hidden;
-  background: #0c0c0c;
-  padding: 1.5rem 0;
-  /* Fondu sur les bords gauche/droite */
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 8%,
-    black 92%,
-    transparent 100%
-  );
-  mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 8%,
-    black 92%,
-    transparent 100%
-  );
+  background: #ede0cc;
+  padding: 1.2rem 0;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
 }
 
-/* La piste qui défile */
 .app__header-gallery_track {
   display: flex;
-  gap: 1.2rem;
+  gap: 1rem;
   width: max-content;
-  animation: gallery__scroll 18s linear infinite;
+  animation: gallery__scroll 20s linear infinite;
 }
 
 .app__header-gallery_track:hover {
-  animation-play-state: paused; /* pause au survol */
+  animation-play-state: paused;
 }
 
-/* Chaque image */
 .app__header-gallery_item {
   flex-shrink: 0;
-  width: 280px;
-  height: 200px;
-  border-radius: 6px;
+  width: 260px;
+  height: 180px;
+  border-radius: 8px;
   overflow: hidden;
-  border: 1px solid rgba(220, 202, 135, 0.15);
+  border: 2px solid rgba(155, 110, 40, 0.2);
   transition: border-color 0.3s ease, transform 0.3s ease;
 }
 
 .app__header-gallery_item:hover {
-  border-color: rgba(220, 202, 135, 0.6);
-  transform: scale(1.03);
+  border-color: rgba(155, 110, 40, 0.6);
+  transform: scale(1.04);
 }
 
 .app__header-gallery_item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
 }
 
-/* Animation de défilement infini */
 @keyframes gallery__scroll {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
 
+/* ── Layout wrapper — réduit les espaces latéraux ── */
+#home.app__wrapper {
+  padding: 4rem 6rem !important;
+  gap: 3rem !important;
+  align-items: center !important;
+}
+
 /* ── Responsive ── */
-@media screen and (max-width: 768px) {
-  .app__header-gallery_item {
-    width: 220px;
-    height: 160px;
+@media screen and (max-width: 1150px) {
+  #home.app__wrapper {
+    padding: 4rem 3rem !important;
+  }
+  .app__header-h1 {
+    font-size: clamp(2rem, 5vw, 3.2rem) !important;
   }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 900px) {
+  #home.app__wrapper {
+    flex-direction: column !important;
+    padding: 3rem 2rem !important;
+    text-align: center !important;
+  }
+  .app__header-badges {
+    justify-content: center;
+  }
+  #home .p__opensans {
+    max-width: 100%;
+  }
+  .app__header-img-frame {
+    max-width: 100%;
+  }
+  .app__header-img-frame img {
+    height: 320px;
+  }
+  .app__header-floating-badge {
+    left: 12px;
+    bottom: -12px;
+    width: 75px;
+    height: 75px;
+  }
+}
+
+@media screen and (max-width: 550px) {
   .app__header-gallery_item {
-    width: 170px;
-    height: 130px;
+    width: 190px;
+    height: 140px;
   }
 }
