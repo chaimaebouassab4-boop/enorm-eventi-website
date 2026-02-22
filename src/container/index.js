@@ -7,6 +7,7 @@ import Header from './Header/Header';
 import Intro from './Intro/Intro';
 import Laurels from './Laurels/Laurels';
 import SpecialMenu from './Menu/SpecialMenu';
+export { default as ContactSection } from './Contact/ContactSection';
 
 export {
   AboutUs,
@@ -18,4 +19,5 @@ export {
   Intro,
   Laurels,
   SpecialMenu,
+  
 };

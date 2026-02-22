@@ -1,8 +1,8 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
-import fr from './locales/fr.json';
-import it from './locales/it.json';
+import fr from './fr.json';
+import it from './it.json';
 
 const STORAGE_KEY = 'enorm_lang';
 const DEFAULT_LANG = 'fr';
@@ -24,13 +24,20 @@ i18n
     },
     lng: getInitialLanguage(),
     fallbackLng: 'fr',
+    supportedLngs: ['fr', 'it'],
+    load: 'languageOnly',
+    react: {
+      useSuspense: false,
+    },
     interpolation: {
       escapeValue: false,
     },
   });
 
 i18n.on('languageChanged', (lng) => {
-  localStorage.setItem(STORAGE_KEY, lng);
+  if (lng === 'fr' || lng === 'it') {
+    localStorage.setItem(STORAGE_KEY, lng);
+  }
 });
 
 export default i18n;

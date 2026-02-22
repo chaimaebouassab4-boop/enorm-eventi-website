@@ -6,13 +6,19 @@ import gallery03 from '../assets/fcdxs.png';
 import gallery04 from '../assets/gallery04.png';
 import knife from '../assets/knifee.png';
 import gallery022 from '../assets/ChatGPT Image Feb 19, 2026, 02_56_31 PM.png';
-
+import logo from '../assets/finallogo.png';
+import fiat500 from '../assets/fiat500.png';
+import cocktails from '../assets/Cocktails.png';
+import dinner from '../assets/Dinner.png';
+import corporate from '../assets/Corporate.png';
+import carte1 from '../assets/carte1.png';
+import carte3 from '../assets/cart3.png';
 import gallery001 from '../assets/WhatsApp Image 2026-02-19 at 13.47.39.jpeg';
 import gallery044 from '../assets/WhatsApp Image 2026-02-19 at 13.47.40 (1).jpeg';
 import gallery05 from '../assets/gallery01.png';
+import grain from '../assets/grainn.png';
 
-
-import logo from '../assets/logo.png';
+import logoImg from '../assets/logo.png';
 import menu from '../assets/menu.png';  
 import overlaybg from '../assets/overlaybg.png';
 import spoon from '../assets/spoon.svg';
@@ -30,6 +36,13 @@ export default {
   bg,
   chef,
   gallery01,
+   logo,
+  fiat500,
+  cocktails,
+  dinner,
+  corporate,
+  carte1,
+  carte3,
   gallery02,
   gallery022,
   gallery03,
@@ -38,12 +51,13 @@ export default {
   gallery05,
   gallery001,
   knife,
-  logo,
+  logoImg,
   logoooo: logo,
   menu,
   overlaybg,
   spoon,
   welcome,
+  grain,
   findus,
   laurels,
   award01,

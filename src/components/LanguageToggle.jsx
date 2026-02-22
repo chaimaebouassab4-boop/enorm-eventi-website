@@ -4,11 +4,15 @@ import './ToggleControls.css';
 
 const LanguageToggle = () => {
   const { i18n, t } = useTranslation();
-  const lang = i18n.resolvedLanguage === 'it' ? 'it' : 'fr';
+  const currentLanguage = i18n?.resolvedLanguage || i18n?.language;
+  const lang = currentLanguage === 'it' ? 'it' : 'fr';
   const nextLang = lang === 'fr' ? 'it' : 'fr';
 
-  const handleLanguageChange = () => {
-    i18n.changeLanguage(nextLang);
+  const handleLanguageChange = async () => {
+    if (!i18n || typeof i18n.changeLanguage !== 'function') {
+      return;
+    }
+    await i18n.changeLanguage(nextLang);
   };
 
   return (

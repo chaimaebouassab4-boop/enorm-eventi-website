@@ -1,96 +1,149 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { MdDirectionsCar, MdDiamond } from 'react-icons/md';
-import { GiWineGlass } from 'react-icons/gi';
-import { FaAward } from 'react-icons/fa';
-import { SubHeading } from '../../components';
+import { MdKeyboardArrowDown } from 'react-icons/md';
+import { GiWineGlass, GiSteeringWheel } from 'react-icons/gi';
+import { FaStar } from 'react-icons/fa';
+import { MdDiamond } from 'react-icons/md';
 import { images } from '../../constants';
 import './Header.css';
 
-const Header = () => {
-  const { t } = useTranslation();
+/* ── Fallback si i18n ne charge pas ── */
+const fallback = {
+  kicker: 'ENOMIS EVENTI',
+  title: "L'icône italienne qui transforme vos événements en souvenirs inoubliables",
+  description:
+    "Chez ENOMIS EVENTI, nous avons réinventé la restauration événementielle à travers une légende : la Fiat 500 vintage. Plus qu'un restaurant mobile, c'est une expérience sensorielle, un symbole de raffinement et d'émotion.",
+  badge1: 'Fiat 500 Vintage',
+  badge2: 'Restauration Premium',
+  badge3: 'Événementiel ',
 
+  overlay_sub: 'Fiat 500 Vintage',
+  scroll_label: 'Découvrir',
+};
+
+const Hero = () => {
+  const { t, ready } = useTranslation();
+  const heroRef = useRef(null);
+  const [visible, setVisible] = useState(false);
+
+  /* Stagger reveal au montage */
+  useEffect(() => {
+    const timer = setTimeout(() => setVisible(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
+
+  /* Helper : récupère la traduction ou le fallback */
+  const tx = (key) => {
+    if (!ready) return fallback[key] ?? '';
+    const val = t(`hero.${key}`);
+    return val && !val.startsWith('hero.') ? val : (fallback[key] ?? '');
+  };
   return (
-    <>
-      <div className="app__header app__wrapper section__padding" id="home">
+    <section className="hs" id="home" ref={heroRef}>
 
-        {/* ── Gauche ── */}
-        <div className="app__wrapper_info">
-          <div className="reveal from-left">
-            <SubHeading title={t('header.subtitle')} />
-          </div>
-          <h1 className="app__header-h1 reveal from-left delay-1">
-            {t('header.title')}
+      {/* ── Image de fond ── MANQUAIT dans l'ancien JSX */}
+      <div
+        className="hs__bg"
+        style={{ backgroundImage: `url(${images.grain})` }}
+        aria-hidden="true"
+      />
+
+      {/* ── Overlay sombre dégradé ── MANQUAIT dans l'ancien JSX */}
+      <div className="hs__overlay" aria-hidden="true" />
+
+      {/* ── Grain texture ── */}
+      <div className="hs__grain" aria-hidden="true" />
+
+      {/* ════════════════════════════════
+          CONTENU PRINCIPAL (deux colonnes)
+          ════════════════════════════════ */}
+      <div className={`hs__inner ${visible ? 'hs__inner--visible' : ''}`}>
+
+        {/* ── COLONNE GAUCHE ── */}
+        <div className="hs__left">
+
+          {/* Kicker */}
+          <p className="hs__kicker hs__anim hs__anim--1">
+            <span className="hs__kicker-line" />
+            {tx('kicker')}
+          </p>
+
+          {/* H1 */}
+          <h1 className="hs__title hs__anim hs__anim--2">
+            {tx('title')}
           </h1>
-          <p className="p__opensans reveal from-left delay-2" style={{ margin: '1.2rem 0' }}>
-            {t('header.description')}
+
+          {/* Description */}
+          <p className="hs__desc hs__anim hs__anim--3">
+            {tx('description')}
           </p>
 
           {/* Badges */}
-          <div className="app__header-badges reveal from-left delay-3">
-            <span className="app__header-badge"><GiWineGlass size={14}/> Bar à Vin</span>
-            <span className="app__header-badge"><MdDirectionsCar size={14}/> Bar Mobile</span>
-            <span className="app__header-badge"><MdDiamond size={14}/> Premium</span>
+          <div className="hs__badges hs__anim hs__anim--4">
+            <span className="hs__badge">
+              <GiSteeringWheel size={13} /> {tx('badge1')}
+            </span>
+            <span className="hs__badge">
+              <GiWineGlass size={13} /> {tx('badge2')}
+            </span>
+            <span className="hs__badge">
+              <MdDiamond size={13} /> {tx('badge3')}
+            </span>
           </div>
 
-          {/* Stats */}
-          <div className="app__header-stats reveal from-left delay-4">
-            <div className="app__header-stat">
-              <span className="app__header-stat_num">200+</span>
-              <span className="app__header-stat_label">Événements</span>
-            </div>
-            <div className="app__header-stat_divider" />
-            <div className="app__header-stat">
-              <span className="app__header-stat_num">5★</span>
-              <span className="app__header-stat_label">Avis clients</span>
-            </div>
-            <div className="app__header-stat_divider" />
-            <div className="app__header-stat">
-              <span className="app__header-stat_num">8+</span>
-              <span className="app__header-stat_label">Années exp.</span>
-            </div>
-          </div>
-
-          <div className="reveal from-bottom delay-5" style={{ marginTop: '1.8rem' }}>
-            <button type="button" className="custom__button">{t('header.cta')}</button>
-          </div>
         </div>
 
-        {/* ── Droite — photos ── */}
-        <div className="app__header-photo-grid reveal from-right delay-1">
-          <div className="app__header-photo-main">
-            <img src={images.welcome} alt="ENORM EVENTI" />
-            <div className="app__header-floating-badge">
-              <FaAward size={16} />
-              <span className="app__header-floating-badge_num">100%</span>
-              <span className="app__header-floating-badge_txt">Premium</span>
-            </div>
-          </div>
-          <div className="app__header-photo-secondary">
-            <img src={images.gallery01} alt="Événement" />
-            <div className="app__header-photo-overlay">
-              <p>Bar Mobile Vintage</p>
-            </div>
-          </div>
-        </div>
+        {/* ── COLONNE DROITE ── */}
+        <div className="hs__right hs__anim hs__anim--2">
 
-      </div>
+          {/* Image principale */}
+          <div className="hs__main-img-wrap">
+            {/* <img
+              src={images.welcome}
+              alt="ENOMIS EVENTI Fiat 500"
+              className="hs__main-img"
+            /> */}
 
-      {/* ── Bande défilante ── */}
-      <div className="app__header-gallery">
-        <div className="app__header-gallery_track">
-          {[...Array(2)].map((_, i) => (
-            <React.Fragment key={i}>
-              <div className="app__header-gallery_item"><img src={images.gallery01} alt="e1" /></div>
-              <div className="app__header-gallery_item"><img src={images.gallery02} alt="e2" /></div>
-              <div className="app__header-gallery_item"><img src={images.gallery03} alt="e3" /></div>
-              <div className="app__header-gallery_item"><img src={images.gallery04} alt="e4" /></div>
-            </React.Fragment>
-          ))}
+            {/* Overlay card */}
+            <div className="hs__img-card">
+              <FaStar size={12} className="hs__img-card-icon" />
+              <div>
+                <p className="hs__img-card-title">{tx('overlay_label')}</p>
+                <p className="hs__img-card-sub">{tx('overlay_sub')}</p>
+              </div>
+            </div>
+
+            {/* Décoration dorée */}
+            <div className="hs__img-deco" aria-hidden="true" />
+          </div>
+
+          {/* Mini galerie */}
+          {/* <div className="hs__gallery">
+            {galleryImages.map((img, i) => (
+              <div
+                key={i}
+                className="hs__gallery-item"
+                style={{ animationDelay: `${0.6 + i * 0.1}s` }}
+              >
+                <img src={img.src} alt={img.alt} />
+                <div className="hs__gallery-overlay" />
+              </div>
+            ))}
+          </div> */}
         </div>
       </div>
-    </>
+
+      {/* ── Scroll indicator ── */}
+      <div className="hs__scroll">
+        <span className="hs__scroll-label">{tx('scroll_label')}</span>
+        <div className="hs__scroll-icon">
+          <MdKeyboardArrowDown size={22} />
+        </div>
+      </div>
+
+    </section>
   );
 };
 
-export default Header;
+export default Hero;
+

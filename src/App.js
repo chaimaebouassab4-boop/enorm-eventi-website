@@ -4,6 +4,9 @@ import { AboutUs, Chef, FindUs, Footer, Gallery, Header, Intro, Laurels, Special
 import { Navbar } from './components';
 import './App.css';
 import './theme.css';
+import { ContactSection } from './container';
+import Services from './container/Services/Services';
+import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 
 const THEME_STORAGE_KEY = 'enorm_theme';
 
@@ -38,13 +41,16 @@ const App = () => {
       <Navbar theme={theme} onToggleTheme={toggleTheme} />
       <Header />
       <AboutUs />
+            <Services />
       <SpecialMenu />
       <Chef />
       <Intro />
       <Laurels />
       <Gallery />
       <FindUs />
+      <ContactSection />
       <Footer />
+      <ScrollToTop />
     </div>
   );
 };
