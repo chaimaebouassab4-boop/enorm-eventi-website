@@ -1,0 +1,21 @@
+{
+  "hero": {
+    "kicker": "ENOMIS EVENTI",
+    "title": "L'icona italiana che trasforma i tuoi eventi in ricordi indimenticabili",
+    "description": "Con ENOMIS EVENTI, abbiamo reinventato la ristorazione eventi attraverso una leggenda: la Fiat 500 vintage. Più di un ristorante mobile, è un'esperienza sensoriale, un simbolo di raffinatezza ed emozione.",
+    "cta_primary": "Prenota un evento",
+    "cta_secondary": "Richiedi un preventivo",
+    "badge1": "Fiat 500 Vintage",
+    "badge2": "Ristorazione Premium",
+    "badge3": "Eventi",
+    "stat1_num": "200+",
+    "stat1_label": "Eventi",
+    "stat2_num": "5★",
+    "stat2_label": "Recensioni clienti",
+    "stat3_num": "8+",
+    "stat3_label": "Anni di esperienza",
+    "overlay_label": "100% Premium",
+    "overlay_sub": "Fiat 500 Vintage",
+    "scroll_label": "Scopri"
+  }
+}

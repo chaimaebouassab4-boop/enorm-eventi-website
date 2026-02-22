@@ -1,4 +1,4 @@
-/* ── Ajoute / remplace dans FindUs.css ── */
+/* FindUs — palette ENORM EVENTI */
 
 .app__findus-cards {
   display: flex;
@@ -11,15 +11,18 @@
   flex-direction: row;
   align-items: flex-start;
   gap: 1rem;
-  background: rgba(220, 202, 135, 0.05);
-  border: 1px solid rgba(220, 202, 135, 0.15);
-  border-radius: 4px;
+  background: #FAF6EF;
+  border: 1px solid #f6cfca;
+  border-radius: 6px;
   padding: 1rem 1.2rem;
-  transition: border-color 0.3s ease;
+  box-shadow: 0 4px 16px rgba(184,107,119,0.10);
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .app__findus-card:hover {
-  border-color: rgba(220, 202, 135, 0.45);
+  border-color: #b86b77;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(184,107,119,0.18);
 }
 
 .app__findus-card_icon {
@@ -30,14 +33,20 @@
 .app__findus-card .p__cormorant {
   display: block;
   margin-bottom: 0.25rem;
+  color: #b86b77;
 }
 
 .app__findus-card .p__opensans {
   margin: 0;
   line-height: 1.6;
+  color: #6B4423;
 }
 
-/* Images empilées verticalement */
+.app__findus-card_icon svg {
+  color: #4A7FA5 !important;
+  fill: #4A7FA5 !important;
+}
+
 .app__wrapper_img {
   display: flex;
   flex-direction: column;

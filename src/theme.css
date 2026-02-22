@@ -1,64 +1,72 @@
+/* ENORM EVENTI — palette unique, pas de thème sombre */
 body {
-  background: var(--bg);
-  color: var(--text);
+  background: var(--cream);
+  color: var(--text-mid);
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-body.theme-dark {
-  --bg: #0c0c0c;
-  --text: #ffffff;
-  --muted: #aaaaaa;
-  --card: #171717;
-  --gold: #dcca87;
-
-  --color-golden: var(--gold);
-  --color-black: #0c0c0c;
-  --color-gray: #545454;
-  --color-crimson: #f5efdb;
-  --color-grey: var(--muted);
-  --color-white: var(--text);
-}
-
+body.theme-dark,
 body.theme-light {
-  --bg: #f5efe3;
-  --text: #1a1a1a;
-  --muted: #575757;
-  --card: #fffaf0;
-  --gold: #8f6a1f;
+  --bg: #FAF6EF;
+  --text: #3D2410;
+  --muted: #6B4423;
+  --card: #F0E8D8;
+  --gold: #b86b77;
 
-  --color-golden: var(--gold);
-  --color-black: #f5efe3;
-  --color-gray: #6a6a6a;
-  --color-crimson: #d9be73;
-  --color-grey: var(--muted);
-  --color-white: var(--text);
+  --color-golden: #b86b77;
+  --color-black: #FAF6EF;
+  --color-gray: #9A7055;
+  --color-crimson: #eabfb9;
+  --color-grey: #6B4423;
+  --color-white: #3D2410;
 }
 
+body.theme-dark .app__bg,
 body.theme-light .app__bg {
-  color: #ffffff;
+  color: #3D2410;
 }
 
+body.theme-dark .app__bg .p__opensans,
+body.theme-dark .app__bg .p__cormorant,
 body.theme-light .app__bg .p__opensans,
 body.theme-light .app__bg .p__cormorant {
-  color: #ffffff;
+  color: #6B4423;
 }
 
+body.theme-dark .app__footer,
+body.theme-dark .app__footerOverlay-black,
 body.theme-light .app__footer,
-body.theme-light .app__footerOverlay-black,
-body.theme-light .app__newsletter,
+body.theme-light .app__footerOverlay-black {
+  background: linear-gradient(135deg, #F0E8D8, #ffe8e5) !important;
+}
+
+body.theme-dark .app__newsletter,
+body.theme-light .app__newsletter {
+  background: linear-gradient(135deg, #4A7FA5 0%, #3A6A8C 100%) !important;
+}
+
+body.theme-dark .app__newsletter-input input,
 body.theme-light .app__newsletter-input input {
-  background: #0c0c0c;
+  background: #FAF6EF !important;
+  color: #3D2410 !important;
 }
 
-body.theme-light .app__footer,
+body.theme-dark .app__footer .p__opensans,
+body.theme-dark .app__footer .app__footer-headtext,
+body.theme-dark .app__footer .app__footer-logo-text,
+body.theme-dark .app__footer .app__footer-links_icons svg,
 body.theme-light .app__footer .p__opensans,
 body.theme-light .app__footer .app__footer-headtext,
 body.theme-light .app__footer .app__footer-logo-text,
-body.theme-light .app__footer .app__footer-links_icons svg,
+body.theme-light .app__footer .app__footer-links_icons svg {
+  color: #3D2410 !important;
+}
+
+body.theme-dark .app__newsletter .p__opensans,
+body.theme-dark .app__newsletter .headtext__cormorant,
 body.theme-light .app__newsletter .p__opensans,
-body.theme-light .app__newsletter .headtext__cormorant,
-body.theme-light .app__newsletter-input input {
-  color: #ffffff;
+body.theme-light .app__newsletter .headtext__cormorant {
+  color: #FAF6EF !important;
 }
 
 .app {

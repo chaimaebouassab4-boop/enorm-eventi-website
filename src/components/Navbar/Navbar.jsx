@@ -1,65 +1,162 @@
-import React, { useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { MdOutlineRestaurantMenu } from 'react-icons/md';
 import { useTranslation } from 'react-i18next';
+
 import ThemeToggle from '../ThemeToggle';
 import LanguageToggle from '../LanguageToggle';
+import { images } from '../../constants';
 import './Navbar.css';
 
+const NAV_ITEMS = [
+  { key: 'nav.home', href: '#home' },
+  { key: 'nav.about', href: '#about' },
+  { key: 'nav.services', href: '#menu' },     // si ton id c'est #services change ici
+  { key: 'nav.awards', href: '#awards' },     // si tu n'as pas "awards", supprime
+  { key: 'nav.contact', href: '#contact' },
+];
+
 const Navbar = ({ theme, onToggleTheme }) => {
-  const [toggleMenu, setToggleMenu] = useState(false);
   const { t } = useTranslation();
+  const [toggleMenu, setToggleMenu] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [activeHash, setActiveHash] = useState('#home');
+
+  const items = useMemo(() => NAV_ITEMS, []);
+
+  useEffect(() => {
+    const onScroll = () => setIsScrolled(window.scrollY > 8);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => {
+    const onHash = () => {
+      const h = window.location.hash || '#home';
+      setActiveHash(h);
+    };
+    window.addEventListener('hashchange', onHash);
+    onHash();
+    return () => window.removeEventListener('hashchange', onHash);
+  }, []);
+
+  const handleNavClick = (href) => {
+    setActiveHash(href);
+    setToggleMenu(false);
+  };
 
   return (
-    <nav className="app__navbar">
-      <div className="app__navbar-logo">
-        <p className="app__navbar-logo-text">ENORM EVENTI</p>
-      </div>
+    <header className={`en__nav ${isScrolled ? 'en__nav--scrolled' : ''}`} role="banner">
+      <nav className="en__nav-inner" aria-label="Primary">
+        {/* Logo */}
+        <a className="en__brand" href="#home" onClick={() => handleNavClick('#home')}>
+          <img
+            src={images.logoooo}
+            alt="ENOMIS EVENTI"
+            className="en__brand-logo"
+          />
+          <div className="en__brand-text">
+            <span className="en__brand-name">ENOMIS EVENTI</span>
+            <span className="en__brand-tag">{t('nav.tagline', 'Fiat 500 • Bar & Restauration Premium')}</span>
+          </div>
+        </a>
 
-      <ul className="app__navbar-links">
-        <li className="p__opensans"><a href="#home">{t('nav.home')}</a></li>
-        <li className="p__opensans"><a href="#about">{t('nav.about')}</a></li>
-        <li className="p__opensans"><a href="#menu">{t('nav.services')}</a></li>
-        <li className="p__opensans"><a href="#awards">{t('nav.awards')}</a></li>
-        <li className="p__opensans"><a href="#contact">{t('nav.contact')}</a></li>
-      </ul>
+        {/* Desktop links */}
+        <ul className="en__links" role="list">
+          {items.map((it) => (
+            <li key={it.href} className="en__link-item">
+              <a
+                href={it.href}
+                onClick={() => handleNavClick(it.href)}
+                className={`en__link ${activeHash === it.href ? 'is-active' : ''}`}
+              >
+                {t(it.key)}
+              </a>
+            </li>
+          ))}
+        </ul>
 
-      <div className="app__navbar-actions">
-        <div className="app__navbar-login">
-          <a href="#contact" className="p__opensans">{t('nav.login')}</a>
-          <div />
-          <a href="#contact" className="p__opensans">{t('nav.book')}</a>
+        {/* Actions */}
+        <div className="en__actions">
+          <div className="en__controls">
+            <LanguageToggle />
+            <ThemeToggle theme={theme} onToggle={onToggleTheme} />
+          </div>
+
+          <div className="en__cta">
+            <a href="#contact" className="en__btn en__btn--ghost" onClick={() => handleNavClick('#contact')}>
+              {t('nav.quote', 'Devis')}
+            </a>
+            <a href="#contact" className="en__btn en__btn--primary" onClick={() => handleNavClick('#contact')}>
+              {t('nav.book', 'Réserver')}
+            </a>
+          </div>
+
+          {/* Mobile button */}
+          <button
+            className="en__burger"
+            type="button"
+            aria-label="Open menu"
+            aria-expanded={toggleMenu}
+            onClick={() => setToggleMenu(true)}
+          >
+            <GiHamburgerMenu />
+          </button>
         </div>
+      </nav>
 
-        <div className="app__navbar-controls">
-          <LanguageToggle />
-          <ThemeToggle theme={theme} onToggle={onToggleTheme} />
-        </div>
-      </div>
+      {/* Mobile overlay */}
+      {toggleMenu && (
+        <div className="en__overlay" role="dialog" aria-modal="true" aria-label="Menu">
+          <div className="en__overlay-top">
+            <a className="en__overlay-brand" href="#home" onClick={() => handleNavClick('#home')}>
+              <img src={images.logoooo} alt="ENOMIS EVENTI" />
+              <span>ENOMIS EVENTI</span>
+            </a>
 
-      <div className="app__navbar-smallscreen">
-        <GiHamburgerMenu color="#dcca87" fontSize={27} onClick={() => setToggleMenu(true)} />
+            <button
+              className="en__overlay-close"
+              type="button"
+              aria-label="Close menu"
+              onClick={() => setToggleMenu(false)}
+            >
+              <MdOutlineRestaurantMenu />
+            </button>
+          </div>
 
-        {toggleMenu && (
-          <div className="app__navbar-smallscreen_overlay flex__center slide-bottom">
-            <MdOutlineRestaurantMenu fontSize={27} className="overlay__close" onClick={() => setToggleMenu(false)} />
+          <ul className="en__overlay-links" role="list">
+            {items.map((it) => (
+              <li key={it.href}>
+                <a
+                  href={it.href}
+                  onClick={() => handleNavClick(it.href)}
+                  className={activeHash === it.href ? 'is-active' : ''}
+                >
+                  {t(it.key)}
+                </a>
+              </li>
+            ))}
+          </ul>
 
-            <ul className="app__navbar-smallscreen_links">
-              <li><a href="#home" onClick={() => setToggleMenu(false)}>{t('nav.home')}</a></li>
-              <li><a href="#about" onClick={() => setToggleMenu(false)}>{t('nav.about')}</a></li>
-              <li><a href="#menu" onClick={() => setToggleMenu(false)}>{t('nav.services')}</a></li>
-              <li><a href="#awards" onClick={() => setToggleMenu(false)}>{t('nav.awards')}</a></li>
-              <li><a href="#contact" onClick={() => setToggleMenu(false)}>{t('nav.contact')}</a></li>
-            </ul>
-
-            <div className="app__navbar-controls app__navbar-controls--overlay">
+          <div className="en__overlay-actions">
+            <div className="en__overlay-controls">
               <LanguageToggle />
               <ThemeToggle theme={theme} onToggle={onToggleTheme} />
             </div>
+
+            <div className="en__overlay-cta">
+              <a href="#contact" className="en__btn en__btn--ghost" onClick={() => handleNavClick('#contact')}>
+                {t('nav.quote', 'Demander un devis')}
+              </a>
+              <a href="#contact" className="en__btn en__btn--primary" onClick={() => handleNavClick('#contact')}>
+                {t('nav.book', 'Réserver un événement')}
+              </a>
+            </div>
           </div>
-        )}
-      </div>
-    </nav>
+        </div>
+      )}
+    </header>
   );
 };
 

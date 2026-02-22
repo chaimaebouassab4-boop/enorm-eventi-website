@@ -2,13 +2,12 @@
     width: 100%;
     position: relative;
     z-index: 1;
-
     display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
-
-    background: var(--color-black);
+    background: linear-gradient(135deg, #F0E8D8, #ffe8e5) !important;
+    border-top: 2px solid #eabfb9 !important;
     padding-top: 0;
 }
 
@@ -17,7 +16,6 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-
     margin-top: 5rem;
     padding: 0 2rem;
 }
@@ -35,7 +33,6 @@
     margin-bottom: 0.75rem;
 }
 
-
 .app__footer-links_work p:nth-child(2n + 1) {
     margin-bottom: 1rem;
 }
@@ -45,25 +42,30 @@
 }
 
 .app__footer-links_icons svg {
-    color: var(--color-white);
+    color: #d2aba6 !important;
     margin: 0.5rem;
     font-size: 24px;
     cursor: pointer;
+    transition: color 0.25s ease;
 }
 
 .app__footer-links_icons svg:hover {
-    color: var(--color-golden);
+    color: #b86b77 !important;
 }
 
 .app__footer-headtext {
     font-family: var(--font-base);
-    color: var(--color-white);
+    color: #3D2410 !important;
     font-weight: 400;
     letter-spacing: 0.04em;
     text-transform: capitalize;
     font-size: 32px;
     line-height: 41.6px;
     margin-bottom: 1rem;
+}
+
+.app__footer p {
+    color: #6B4423 !important;
 }
 
 .footer__copyright {
@@ -103,7 +105,6 @@
         width: 80%;
     }
 }
-/* Ajoute ces styles à la fin de ton Footer.css existant */
 
 .app__footer-contact-item {
   display: flex;
@@ -115,4 +116,5 @@
 
 .app__footer-contact-item .p__opensans {
   margin: 0;
+  color: #6B4423 !important;
 }

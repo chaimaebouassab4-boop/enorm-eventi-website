@@ -25,7 +25,7 @@ const Gallery = () => {
         <SubHeading title={t('gallery.subtitle')} />
         <h1 className="headtext__cormorant">{t('gallery.title')}</h1>
 
-        <p className="p__opensans" style={{ color: 'var(--color-grey)', marginTop: '2rem' }}>
+        <p className="p__opensans" style={{ color: '#6B4423', marginTop: '2rem' }}>
           {t('gallery.description')}
         </p>
 

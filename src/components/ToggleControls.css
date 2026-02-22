@@ -10,9 +10,9 @@
   align-items: center;
   gap: 0.35rem;
   padding: 0.35rem 0.6rem;
-  border: 1px solid var(--color-golden);
+  border: 1px solid #b86b77;
   background: transparent;
-  color: var(--color-white);
+  color: #3D2410;
   font-family: var(--font-alt);
   font-size: 0.78rem;
   letter-spacing: 0.06em;
@@ -22,12 +22,12 @@
 }
 
 .app__control-btn:hover {
-  background: var(--color-golden);
-  color: #0c0c0c;
+  background: #b86b77;
+  color: #FAF6EF;
 }
 
 .app__control-btn:focus-visible {
-  outline: 2px solid var(--color-golden);
+  outline: 2px solid #b86b77;
   outline-offset: 2px;
 }
 

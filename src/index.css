@@ -1,52 +1,386 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Upright:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap');
+/* ════════════════════════════════════════
+   index.css — ENORM EVENTI (VERSION FINALE)
+   ════════════════════════════════════════ */
 
+/* ── Variables couleurs ── */
 :root {
-  --font-base: 'Cormorant Upright', serif;
-  --font-alt: 'Open Sans', sans-serif;
-  
-  --color-golden: #DCCA87;
-  --color-black: #0C0C0C;
-  --color-gray: #545454;
-  --color-crimson: #F5EFDB;
-  --color-grey: #AAAAAA;
-  --color-white: #FFFFFF;
+  --cream:      #FAF6EF;
+  --beige:      #F0E8D8;
+  --beige-dark: #E4D5C0;
+  --blue:       #4A7FA5;
+  --blue-light: #A8CADE;
+  --rose-1:     #b86b77;
+  --rose-2:     #d2aba6;
+  --rose-3:     #eabfb9;
+  --rose-4:     #f6cfca;
+  --rose-5:     #ffe8e5;
+  --text-dark:  #3D2410;
+  --text-mid:   #6B4423;
+  --text-light: #9A7055;
+  --shadow-s:   0 4px 16px rgba(184,107,119,0.10);
+  --shadow-m:   0 8px 32px rgba(184,107,119,0.18);
+  --shadow-l:   0 16px 50px rgba(184,107,119,0.24);
 }
 
+/* ── Reset global ── */
 * {
   box-sizing: border-box;
-  padding: 0;
   margin: 0;
-  scroll-behavior: smooth;
+  padding: 0;
 }
 
-a {
-  color: unset;
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+  background-color: var(--cream);
+  color: var(--text-mid);
+}
+
+/* ── Scroll animations ── */
+.reveal {
+  opacity: 0;
+  transition: opacity 0.75s ease, transform 0.75s ease;
+}
+.reveal.from-left   { transform: translateX(-60px); }
+.reveal.from-right  { transform: translateX(60px); }
+.reveal.from-bottom { transform: translateY(50px); }
+.reveal.zoom-in     { transform: scale(0.88); }
+.reveal.visible {
+  opacity: 1 !important;
+  transform: none !important;
+}
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+.delay-5 { transition-delay: 0.5s; }
+
+/* ── Typographie globale ── */
+.headtext__cormorant {
+  font-family: 'Cormorant Upright', serif;
+  color: var(--text-dark) !important;
+  font-weight: 700;
+}
+
+.p__opensans {
+  font-family: 'Open Sans', sans-serif;
+  color: var(--text-mid) !important;
+}
+
+.p__cormorant {
+  font-family: 'Cormorant Upright', serif;
+  color: var(--rose-1) !important;
+}
+
+/* ── Layouts ── */
+.app__wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 4rem 5rem;
+  gap: 3rem;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.app__wrapper_info {
+  flex: 1;
+  max-width: 50%;
+  min-width: 0;
+}
+
+.app__wrapper_img {
+  flex: 1;
+  max-width: 48%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.app__wrapper_img img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.5s ease, filter 0.4s ease;
+}
+
+.app__wrapper_img img:hover {
+  transform: scale(1.03);
+  filter: brightness(1.08);
+}
+
+.flex__center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.section__padding {
+  padding: 4rem 5rem;
+}
+
+/* ── Fond sections alternées ── */
+.app__bg {
+  background: var(--beige) !important;
+}
+
+/* ── Bouton global ── */
+.custom__button {
+  background: var(--rose-1) !important;
+  color: var(--cream) !important;
+  border: 2px solid var(--rose-1) !important;
+  border-radius: 4px !important;
+  padding: 0.75rem 2rem !important;
+  font-family: 'Open Sans', sans-serif !important;
+  font-size: 0.88rem !important;
+  letter-spacing: 0.08em !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+}
+
+.custom__button:hover {
+  background: transparent !important;
+  color: var(--rose-1) !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 8px 32px rgba(184,107,119,0.25) !important;
+}
+
+/* ── Navbar ── */
+.app__navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 5rem;
+  background: rgba(250, 246, 239, 0.97) !important;
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--rose-3) !important;
+  box-shadow: 0 2px 20px rgba(184,107,119,0.08) !important;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  animation: navSlideDown 0.6s ease forwards;
+}
+
+@keyframes navSlideDown {
+  from { opacity:0; transform:translateY(-30px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+.app__navbar-logo-text {
+  font-family: 'Cormorant Upright', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--text-dark) !important;
+  text-transform: uppercase;
+}
+
+.app__navbar-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.app__navbar-links li a {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.85rem;
+  color: var(--text-dark) !important;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.app__navbar-links li a:hover {
+  color: var(--rose-1) !important;
+}
+
+.app__navbar-login {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.app__navbar-login a {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.85rem;
+  color: var(--text-dark) !important;
   text-decoration: none;
 }
 
-.slide-bottom {
-  -webkit-animation: slide-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-	animation: slide-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+.app__navbar-login div {
+  width: 1px;
+  height: 20px;
+  background: var(--rose-3) !important;
 }
 
-@-webkit-keyframes slide-bottom {
-  0% {
-    -webkit-transform: translateY(-25%);
-            transform: translateY(-25%);
-  }
-  100% {
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
-  }
+/* ── Menu items ── */
+.app__menuitem {
+  transition: transform 0.25s ease;
+}
+.app__menuitem:hover { transform: translateX(5px); }
+
+.app__menuitem-name p { color: var(--text-dark) !important; }
+.app__menuitem-desc p { color: var(--rose-2) !important; }
+.app__menuitem-dash p { color: var(--rose-3) !important; }
+
+/* ── Awards ── */
+.app__laurels_awards-card {
+  transition: transform 0.3s ease;
+}
+.app__laurels_awards-card:hover { transform: translateX(8px); }
+
+.app__laurels_awards-card_content .p__cormorant {
+  color: var(--rose-1) !important;
 }
 
-@keyframes slide-bottom {
-  0% {
-    -webkit-transform: translateY(-25%);
-            transform: translateY(-25%);
+/* ── Footer ── */
+.app__footer {
+  background: linear-gradient(135deg, var(--beige) 0%, var(--rose-5) 100%) !important;
+  border-top: 2px solid var(--rose-3) !important;
+}
+
+.app__footer-headtext {
+  font-family: 'Cormorant Upright', serif;
+  color: var(--text-dark) !important;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.app__footer p,
+.app__footer .p__opensans {
+  color: var(--text-mid) !important;
+}
+
+.app__footer-logo-text {
+  font-family: 'Cormorant Upright', serif;
+  color: var(--rose-1) !important;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+}
+
+.app__footer-links_icons svg {
+  color: var(--rose-2) !important;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: color 0.25s ease, transform 0.25s ease;
+  margin: 0 0.4rem;
+}
+
+.app__footer-links_icons svg:hover {
+  color: var(--rose-1) !important;
+  transform: scale(1.3) translateY(-3px);
+}
+
+.footer__copyright {
+  text-align: center;
+  padding: 1.5rem;
+  border-top: 1px solid var(--rose-4);
+}
+
+.footer__copyright p {
+  color: var(--text-light) !important;
+  font-size: 0.8rem;
+}
+
+/* ── Newsletter ── */
+.app__newsletter {
+  background: linear-gradient(135deg, var(--blue) 0%, #3A6A8C 100%) !important;
+  border-radius: 8px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.app__newsletter-input input {
+  background: var(--cream) !important;
+  border: 1px solid var(--rose-3) !important;
+  color: var(--text-dark) !important;
+  border-radius: 4px 0 0 4px;
+  padding: 0.6rem 1rem;
+}
+
+.app__newsletter-input button {
+  background: var(--rose-1) !important;
+  color: var(--cream) !important;
+  border: none !important;
+  border-radius: 0 4px 4px 0;
+}
+
+/* ── FindUs cards ── */
+.app__findus-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.app__findus-card {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 1rem;
+  background: var(--cream) !important;
+  border: 1px solid var(--rose-4) !important;
+  border-radius: 6px;
+  padding: 1rem 1.2rem;
+  box-shadow: var(--shadow-s) !important;
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.app__findus-card:hover {
+  border-color: var(--rose-1) !important;
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-m) !important;
+}
+
+.app__findus-card_icon {
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.app__findus-card .p__cormorant {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: 1rem;
+}
+
+.app__findus-card .p__opensans {
+  margin: 0;
+  line-height: 1.6;
+  font-size: 0.88rem;
+}
+
+/* ── Contact icon color ── */
+.app__findus-card_icon svg {
+  color: var(--blue) !important;
+  fill: var(--blue) !important;
+}
+
+/* ── Spoon decoration ── */
+.spoon__img {
+  filter: hue-rotate(300deg) saturate(0.6) brightness(1.1);
+}
+
+/* ── Responsive ── */
+@media screen and (max-width: 1100px) {
+  .app__wrapper,
+  .section__padding { padding: 3rem 2.5rem; }
+  .app__navbar { padding: 1rem 2.5rem; }
+}
+
+@media screen and (max-width: 768px) {
+  .app__wrapper {
+    flex-direction: column;
+    padding: 2.5rem 1.5rem;
   }
-  100% {
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
+  .app__wrapper_info,
+  .app__wrapper_img {
+    max-width: 100%;
+    width: 100%;
   }
+  .section__padding { padding: 2.5rem 1.5rem; }
+  .app__navbar { padding: 1rem 1.5rem; }
+  .app__navbar-links,
+  .app__navbar-login { display: none; }
 }

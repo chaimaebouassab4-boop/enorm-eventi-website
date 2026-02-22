@@ -10,7 +10,7 @@
 
 .app__footerOverlay-black {
     height: 25%;
-    background: var(--color-black);
+    background: linear-gradient(180deg, #F0E8D8, #ffe8e5);
 }
 
 .app__footerOverlay-img {

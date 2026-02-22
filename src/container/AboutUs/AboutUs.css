@@ -49,7 +49,7 @@
 .app__aboutus-content_about p,
 .app__aboutus-content_history p {
     margin: 2rem 0;
-    color: var(--color-grey);
+    color: #6B4423;
 }
 
 @media screen and (min-width: 2000px) {
@@ -79,3 +79,29 @@
         height: 320px;
     }
 }
+
+/* Ajoute à la fin de AboutUs.css */
+
+/* ── Remplace le couteau par une ligne rosée ── */
+.app__aboutus-content_knife {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-direction: column !important;
+    width: 2px !important;
+    min-height: 250px !important;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      #eabfb9 20%,
+      #d2aba6 50%,
+      #eabfb9 80%,
+      transparent 100%
+    ) !important;
+    flex-shrink: 0 !important;
+  }
+  
+  /* Cache l'image du couteau */
+  .app__aboutus-content_knife img {
+    display: none !important;
+  }
