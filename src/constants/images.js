@@ -32,6 +32,7 @@ import award05 from '../assets/award05.png';
 import quote from '../assets/quote.png';
 import gericht from '../assets/gericht.png';
 
+import hala from '../assets/hala.jpg';
 export default {
   bg,
   chef,
@@ -66,5 +67,5 @@ export default {
   award05,
   quote,
   gericht,
-  G: overlaybg,
-};
+  hala,
+corporate,};

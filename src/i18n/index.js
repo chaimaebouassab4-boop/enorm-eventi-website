@@ -4,7 +4,7 @@ import { initReactI18next } from 'react-i18next';
 import fr from './fr.json';
 import it from './it.json';
 
-const STORAGE_KEY = 'enorm_lang';
+const STORAGE_KEY = 'ENOMIS_lang';
 const DEFAULT_LANG = 'fr';
 
 const getInitialLanguage = () => {

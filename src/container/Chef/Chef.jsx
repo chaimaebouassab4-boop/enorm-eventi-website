@@ -36,10 +36,7 @@ const Chef = () => {
           />
 
           {/* Badge flottant */}
-          <div className="chef__img-badge">
-            <span className="chef__img-badge-dot" />
-            <span className="chef__img-badge-text">Fiat 500 Vintage</span>
-          </div>
+          
         </div>
       </div>
 

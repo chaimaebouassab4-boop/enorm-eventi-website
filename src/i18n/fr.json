@@ -18,4 +18,59 @@
     "overlay_sub": "Fiat 500 Vintage",
     "scroll_label": "Découvrir"
   }
+  ,"gallery": {
+  "subtitle": "Notre Galerie",
+  "title": "Moments Inoubliables",
+  "description": "Découvrez nos plus beaux événements en images — mariages, soirées VIP et dîners privés.",
+  "cta": "Voir tous les événements"
+},
+  "services": {
+    "kicker": "Nos Prestations",
+    "title": "Des expériences sur mesure, à la hauteur de vos événements",
+    "subtitle": "De la conception au service, chaque prestation ENOMIS EVENTI est pensée pour créer une ambiance unique, élégante et mémorable.",
+    "cardCta": "Demander un devis",
+    "cards": {
+      "wine": {
+        "title": "Bar à Vins & Champagnes",
+        "desc": "Une sélection premium de vins italiens et champagnes millésimés, servis depuis notre Fiat 500 vintage pour sublimer chaque instant.",
+        "points": [
+          "Vins italiens sélectionnés",
+          "Champagnes & Prosecco",
+          "Accords mets & vins",
+          "Service à la bouteille ou en dégustation"
+        ]
+      },
+      "cocktail": {
+        "title": "Bar Mobile & Cocktails",
+        "desc": "Cocktails signatures, apéritifs dinatoires et créations sur mesure — notre bartender élabore des recettes qui marquent les esprits.",
+        "points": [
+          "Cocktails classiques & signatures",
+          "Mocktails & options sans alcool",
+          "Bar ouvert ou formule à la carte",
+          "Animation bartender live"
+        ]
+      },
+      "dinner": {
+        "title": "Dîners Privés & Buffets",
+        "desc": "Une cuisine événementielle élégante et personnalisée pour vos mariages, anniversaires et soirées exclusives.",
+        "points": [
+          "Dîners privés & galas",
+          "Buffets raffinés sur mesure",
+          "Animations culinaires live",
+          "Menus adaptés à vos invités"
+        ]
+      },
+      "corporate": {
+        "title": "Événements Corporate",
+        "desc": "Lancements de produits, séminaires, activations de marque — ENOMIS EVENTI apporte l'effet WOW à vos événements professionnels.",
+        "points": [
+          "Lancements & activations de marque",
+          "Séminaires & événements corporate",
+          "Salons & expositions",
+          "Concept personnalisé à votre image"
+        ]
+      }
+    }
+  }
 }
+

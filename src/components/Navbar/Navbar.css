@@ -1,67 +1,65 @@
 /* ═══════════════════════════════════════════════════
-   Navbar.css — ENOMIS EVENTI · Premium Sticky Header
-   Inspiré du design EcoVap : sticky, scroll-aware,
-   boutons arrondis, logo texte fort
+   Navbar.css — ENOMIS EVENTI · FIXED VERSION
    ═══════════════════════════════════════════════════ */
 
-/* ── Base header ── */
 .en-navbar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 9999;
-  background: rgba(250, 246, 239, 0.92);
+  background: rgba(250, 246, 239, 0.95);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(234, 191, 185, 0.4);
-  transition: background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Scrolled state — plus opaque + ombre */
 .en-navbar--scrolled {
-  background: rgba(250, 246, 239, 0.98);
+  background: rgba(250, 246, 239, 0.99);
   box-shadow: 0 4px 32px rgba(184, 107, 119, 0.12);
   border-bottom-color: rgba(234, 191, 185, 0.7);
 }
 
-/* ── Inner layout ── */
+/* ── Inner — hauteur fixe, tout aligné ── */
 .en-navbar__inner {
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 2rem;
-  height: 72px;
+  height: 70px;           /* ← hauteur fixe de la navbar */
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 1.5rem;
 }
 
-/* ════════════════════════════════════
-   LOGO
-   ════════════════════════════════════ */
+/* ════════════════════════════
+   LOGO — taille contrôlée
+   ════════════════════════════ */
 .en-navbar__logo {
   display: flex;
   align-items: center;
-  gap: 0.65rem;
   text-decoration: none;
   flex-shrink: 0;
-  line-height: 0;
+  height: 100%;           /* prend la hauteur de la navbar */
   transition: opacity 0.2s ease;
 }
 
-.en-navbar__logo:hover {
-  opacity: 0.85;
-}
+.en-navbar__logo:hover { opacity: 0.85; }
 
+/* ✅ FIX PRINCIPAL : logo limité à la hauteur de la navbar */
 .en-navbar__logo-img {
-  display: block;
-  height: 56px;
+  height: 180px;           /* ← ajuste cette valeur (54-60px recommandé) */
   width: auto;
-  max-width: 240px;
+  max-width: 180px;
   object-fit: contain;
+  display: block;
+  transition: transform 0.3s ease;
 }
 
-/* Badge lettre E */
+.en-navbar__logo-img:hover { transform: scale(1.04); }
+
+/* Fallback badge si pas d'image */
 .en-navbar__logo-badge {
   width: 40px;
   height: 40px;
@@ -82,33 +80,36 @@
   display: flex;
   flex-direction: column;
   line-height: 1;
-  gap: 1px;
+  gap: 2px;
+  margin-left: 0.5rem;
 }
 
 .en-navbar__logo-main {
   font-family: 'Cormorant Upright', serif;
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: 700;
   color: #2C1810;
   letter-spacing: 0.08em;
+  white-space: nowrap;
 }
 
 .en-navbar__logo-sub {
   font-family: 'Open Sans', sans-serif;
-  font-size: 0.58rem;
+  font-size: 0.55rem;
   font-weight: 600;
-  letter-spacing: 0.20em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: #b86b77;
+  white-space: nowrap;
 }
 
-/* ════════════════════════════════════
+/* ════════════════════════════
    NAVIGATION DESKTOP
-   ════════════════════════════════════ */
+   ════════════════════════════ */
 .en-navbar__nav {
   display: flex;
   align-items: center;
-  gap: 0.25rem;
+  gap: 0.15rem;
   flex: 1;
   justify-content: center;
 }
@@ -116,15 +117,15 @@
 .en-navbar__link {
   position: relative;
   display: inline-block;
-  padding: 0.45rem 0.85rem;
+  padding: 0.4rem 0.75rem;
   font-family: 'Open Sans', sans-serif;
-  font-size: 0.84rem;
+  font-size: 0.83rem;
   font-weight: 500;
   color: #4A2E18;
   text-decoration: none;
   border-radius: 8px;
-  transition: color 0.25s ease, background 0.25s ease;
   white-space: nowrap;
+  transition: color 0.25s ease, background 0.25s ease;
 }
 
 .en-navbar__link:hover {
@@ -137,37 +138,35 @@
   font-weight: 600;
 }
 
-/* Barre soulignement active */
 .en-navbar__link-bar {
   position: absolute;
-  bottom: -1px;
-  left: 10%;
-  right: 10%;
+  bottom: 0;
+  left: 12%;
+  right: 12%;
   height: 2px;
   border-radius: 999px;
   background: linear-gradient(90deg, #b86b77, #d2aba6);
 }
 
-/* ════════════════════════════════════
+/* ════════════════════════════
    BOUTONS CTA
-   ════════════════════════════════════ */
+   ════════════════════════════ */
 .en-navbar__actions {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.45rem;
   flex-shrink: 0;
 }
 
-/* Base bouton */
 .en-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
-  padding: 0 1.1rem;
-  height: 38px;
+  gap: 0.4rem;
+  padding: 0 1rem;
+  height: 36px;
   border-radius: 999px;
   font-family: 'Open Sans', sans-serif;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.02em;
   text-decoration: none;
@@ -175,15 +174,13 @@
   border: 2px solid transparent;
   white-space: nowrap;
   transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  background: none;
 }
 
-/* Ghost — transparent avec bordure rosée */
 .en-btn--ghost {
-  background: transparent;
   color: #6B4423;
   border-color: rgba(184, 107, 119, 0.30);
 }
-
 .en-btn--ghost:hover {
   background: rgba(184, 107, 119, 0.07);
   border-color: rgba(184, 107, 119, 0.55);
@@ -191,34 +188,28 @@
   transform: translateY(-1px);
 }
 
-/* Outline — fond crème + bordure rosée forte */
 .en-btn--outline {
   background: #FAF6EF;
   color: #b86b77;
   border-color: #b86b77;
 }
-
 .en-btn--outline:hover {
   background: #fff0ee;
   transform: translateY(-1px);
-  box-shadow: 0 4px 16px rgba(184, 107, 119, 0.20);
+  box-shadow: 0 4px 16px rgba(184, 107, 119, 0.18);
 }
 
-/* Primary — gradient rosé plein */
 .en-btn--primary {
-  background: linear-gradient(135deg, #b86b77 0%, #c97f8a 100%);
+  background: linear-gradient(135deg, #b86b77, #c97f8a);
   color: #FAF6EF;
-  border-color: transparent;
-  box-shadow: 0 4px 18px rgba(184, 107, 119, 0.35);
+  box-shadow: 0 4px 16px rgba(184, 107, 119, 0.32);
 }
-
 .en-btn--primary:hover {
-  background: linear-gradient(135deg, #a35a66 0%, #b86b77 100%);
+  background: linear-gradient(135deg, #a35a66, #b86b77);
   transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(184, 107, 119, 0.45);
+  box-shadow: 0 8px 24px rgba(184, 107, 119, 0.42);
 }
 
-/* Full width pour mobile */
 .en-btn--full {
   width: 100%;
   justify-content: center;
@@ -226,9 +217,9 @@
   height: 44px;
 }
 
-/* ════════════════════════════════════
+/* ════════════════════════════
    BURGER MOBILE
-   ════════════════════════════════════ */
+   ════════════════════════════ */
 .en-navbar__burger {
   display: none;
   flex-direction: column;
@@ -242,8 +233,8 @@
   border-radius: 10px;
   cursor: pointer;
   padding: 0;
-  transition: border-color 0.25s ease, background 0.25s ease;
   flex-shrink: 0;
+  transition: border-color 0.25s ease, background 0.25s ease;
 }
 
 .en-navbar__burger:hover {
@@ -261,33 +252,24 @@
   transform-origin: center;
 }
 
-/* Burger → X */
-.en-navbar__burger--open span:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
-}
-.en-navbar__burger--open span:nth-child(2) {
-  opacity: 0;
-  transform: scaleX(0);
-}
-.en-navbar__burger--open span:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
-}
+.en-navbar__burger--open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.en-navbar__burger--open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.en-navbar__burger--open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* ════════════════════════════════════
+/* ════════════════════════════
    MENU MOBILE
-   ════════════════════════════════════ */
+   ════════════════════════════ */
 .en-navbar__mobile {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-              opacity 0.3s ease;
   opacity: 0;
   background: rgba(250, 246, 239, 0.99);
   border-top: 1px solid rgba(234, 191, 185, 0.5);
+  transition: max-height 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
 }
 
 .en-navbar__mobile--open {
-  max-height: 480px;
+  max-height: 500px;
   opacity: 1;
 }
 
@@ -325,47 +307,30 @@
   margin-top: 0.5rem;
 }
 
-/* ════════════════════════════════════
+/* ════════════════════════════
    RESPONSIVE
-   ════════════════════════════════════ */
-
-/* Cacher nav + actions sur tablette/mobile */
+   ════════════════════════════ */
 @media screen and (max-width: 1024px) {
-  .en-navbar__nav { display: none; }
+  .en-navbar__nav     { display: none; }
   .en-navbar__actions { display: none; }
-  .en-navbar__burger { display: flex; }
+  .en-navbar__burger  { display: flex; }
 }
 
 @media screen and (max-width: 768px) {
-  .en-navbar__inner {
-    padding: 0 1.2rem;
-    height: 64px;
-  }
-  .en-navbar__logo-img {
-    height: 48px;
-    max-width: 180px;
-  }
-  .en-navbar__logo-main { font-size: 1.1rem; }
-  .en-navbar__logo-badge { width: 36px; height: 36px; font-size: 1.2rem; }
+  .en-navbar__inner { padding: 0 1.2rem; height: 62px; }
+  .en-navbar__logo-img { height: 46px; max-width: 150px; }
 }
 
-/* ════════════════════════════════════
+/* ════════════════════════════
    DARK MODE
-   ════════════════════════════════════ */
-.dark .en-navbar {
-  background: rgba(20, 10, 6, 0.92);
-  border-bottom-color: rgba(184, 107, 119, 0.20);
-}
-
-.dark .en-navbar--scrolled {
-  background: rgba(20, 10, 6, 0.98);
-}
-
+   ════════════════════════════ */
+.dark .en-navbar          { background: rgba(20,10,6,0.95); }
+.dark .en-navbar--scrolled{ background: rgba(20,10,6,0.99); }
 .dark .en-navbar__logo-main { color: #f5ede0; }
-.dark .en-navbar__link { color: #c8a882; }
+.dark .en-navbar__link      { color: #c8a882; }
 .dark .en-navbar__link:hover,
 .dark .en-navbar__link--active { color: #d2aba6; }
-.dark .en-btn--ghost { color: #c8a882; border-color: rgba(210,171,166,0.25); }
+.dark .en-btn--ghost   { color: #c8a882; border-color: rgba(210,171,166,0.25); }
 .dark .en-btn--outline { background: rgba(255,255,255,0.05); color: #d2aba6; }
-.dark .en-navbar__mobile { background: rgba(20,10,6,0.99); }
-.dark .en-navbar__mobile-link { color: #c8a882; }
+.dark .en-navbar__mobile     { background: rgba(20,10,6,0.99); }
+.dark .en-navbar__mobile-link{ color: #c8a882; }

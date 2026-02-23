@@ -20,7 +20,7 @@ const cards = [
   {
     icon: <MdEmail color="#dcca87" size={22} />,
     title: 'Email',
-    text: 'contact@enormeventi.com — Réponse garantie sous 24h pour toute demande de devis ou information.',
+    text: 'contact@ENOMISeventi.com — Réponse garantie sous 24h pour toute demande de devis ou information.',
     delay: 'delay-2',
   },
   {
@@ -41,7 +41,7 @@ const FindUs = () => (
       </div>
 
       <p className="p__opensans reveal from-left delay-1" style={{ marginBottom: '2rem', lineHeight: '1.8' }}>
-        ENORM EVENTI se déplace partout en Italie et à l'international pour sublimer
+        ENOMIS EVENTI se déplace partout en Italie et à l'international pour sublimer
         vos événements les plus précieux. Que ce soit un mariage en Toscane, une soirée
         VIP à Milan ou un événement d'entreprise à Rome, nous sommes là pour vous.
       </p>

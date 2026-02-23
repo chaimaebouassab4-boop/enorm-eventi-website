@@ -65,7 +65,7 @@ const ContactSection = () => {
               {t("contact.formTitle", "Envoyez-nous un message")}
             </h3>
 
-            <form className="en-contact__form" onSubmit={onSubmit}>
+            <form id="contact-form" className="en-contact__form" onSubmit={onSubmit}>
               <label className="en-field">
                 <span className="en-field__label">
                   {t("contact.fullName", "Nom complet")}

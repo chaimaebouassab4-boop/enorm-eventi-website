@@ -8,7 +8,7 @@ import { ContactSection } from './container';
 import Services from './container/Services/Services';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 
-const THEME_STORAGE_KEY = 'enorm_theme';
+const THEME_STORAGE_KEY = 'ENOMIS_theme';
 
 const getInitialTheme = () => {
   const storedTheme = localStorage.getItem(THEME_STORAGE_KEY);

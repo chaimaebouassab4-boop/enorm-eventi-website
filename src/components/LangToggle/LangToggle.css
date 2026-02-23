@@ -1,0 +1,50 @@
+/* ════════════════════════════════
+   LangToggle.css — ENOMIS EVENTI
+   ════════════════════════════════ */
+
+.lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0 0.85rem;
+  height: 36px;
+  border-radius: 999px;
+  border: 2px solid rgba(184, 107, 119, 0.35);
+  background: transparent;
+  cursor: pointer;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #6B4423;
+  letter-spacing: 0.05em;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.lang-toggle:hover {
+  background: rgba(184, 107, 119, 0.08);
+  border-color: #b86b77;
+  color: #b86b77;
+  transform: translateY(-1px);
+}
+
+.lang-toggle__flag {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.lang-toggle__label {
+  font-weight: 800;
+  color: #b86b77;
+}
+
+.lang-toggle__arrow {
+  color: #d2aba6;
+  flex-shrink: 0;
+}
+
+.lang-toggle__target {
+  color: #9A7055;
+  font-weight: 600;
+}
