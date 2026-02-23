@@ -25,7 +25,7 @@ const ContactSection = () => {
     if (!form.fullName || !form.email || !form.message) return;
 
     console.log("Contact form submit:", form);
-    alert(t("contact.sent", "Message envoyé ✅"));
+    alert(t("contact.sent", "Message envoyé ! Nous vous contacterons bientôt."));
     setForm({ fullName: "", email: "", phone: "", message: "" });
   };
 
