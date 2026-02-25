@@ -35,7 +35,7 @@ import quote from '../assets/quote.png';
 import gericht from '../assets/gericht.png';
 
 import hala from '../assets/hala.jpg';
-export default {
+const images = {
   bg,
   chef,
   gallery01,
@@ -72,5 +72,6 @@ export default {
   award05,
   quote,
   gericht,
-  hala,
-corporate,};
+  hala,};
+
+export default images;

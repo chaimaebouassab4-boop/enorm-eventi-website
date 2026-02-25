@@ -59,24 +59,26 @@ const awards = [
   {
     imgUrl: images.award01,
     title: 'Service Premium',
-    subtitle: 'Personnel professionnel, installation soignée et attention aux moindres détails.',
+    subtitle: 'Personnel professionnel, installation soignÃ©e et attention aux moindres dÃ©tails.',
   },
   {
     imgUrl: images.award02,
     title: 'Bar Mobile Vintage',
-    subtitle: 'Un concept élégant qui attire tous les regards et sublime votre événement.',
+    subtitle: 'Un concept Ã©lÃ©gant qui attire tous les regards et sublime votre Ã©vÃ©nement.',
   },
   {
     imgUrl: images.award03,
-    title: 'Produits de Qualité',
-    subtitle: 'Sélection raffinée de vins, champagnes et boissons haut de gamme.',
+    title: 'Produits de QualitÃ©',
+    subtitle: 'SÃ©lection raffinÃ©e de vins, champagnes et boissons haut de gamme.',
   },
   {
     imgUrl: images.award05,
-    title: 'Expérience Sur Mesure',
-    subtitle: 'Chaque événement est personnalisé selon votre thème et vos attentes.',
+    title: 'ExpÃ©rience Sur Mesure',
+    subtitle: 'Chaque Ã©vÃ©nement est personnalisÃ© selon votre thÃ¨me et vos attentes.',
   },
 ];
 
 
-export default { wines, cocktails, awards };
+const data = { wines, cocktails, awards };
+
+export default data;
