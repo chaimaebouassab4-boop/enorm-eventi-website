@@ -1,4 +1,5 @@
-import React, { useMemo } from 'react';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   FaWineGlassAlt,
   FaCocktail,
@@ -10,7 +11,6 @@ import {
 import './Services.css';
 import { images } from '../../constants';
 
-/* ── Contenu hardcodé FR (fallback sans i18n) ── */
 const CARDS = [
   {
     image:   images.gallery01,
@@ -63,17 +63,15 @@ const CARDS = [
 ];
 
 const Services = () => {
-  const scrollToContact = () => {
-    const el = document.querySelector('#contact');
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    else window.location.hash = '#contact';
-  };
+  const navigate = useNavigate();
+
+  /* ✅ Navigue vers /contact au lieu de chercher #contact par scroll */
+  const goToContact = () => navigate('/contact');
 
   return (
     <section className="en-sv" id="services">
       <div className="en-sv__container">
 
-        {/* ── Header ── */}
         <div className="en-sv__head reveal from-bottom">
           <p className="en-sv__kicker">Nos Prestations</p>
           <h2 className="en-sv__title">Des expériences sur mesure,<br />à la hauteur de vos événements</h2>
@@ -83,14 +81,12 @@ const Services = () => {
           </p>
         </div>
 
-        {/* ── Grille de cartes ── */}
         <div className="en-sv__grid">
           {CARDS.map((c, idx) => (
             <article
               className={`en-sv__card reveal from-bottom delay-${idx + 1}`}
               key={idx}
             >
-              {/* Image */}
               <div className="en-sv__card-img-wrap">
                 <img src={c.image} alt={c.title} className="en-sv__card-img" />
                 <div className="en-sv__card-img-overlay" />
@@ -99,7 +95,6 @@ const Services = () => {
                 </div>
               </div>
 
-              {/* Corps */}
               <div className="en-sv__card-body">
                 <h3 className="en-sv__cardTitle">{c.title}</h3>
                 <p className="en-sv__cardDesc">{c.desc}</p>
@@ -113,7 +108,7 @@ const Services = () => {
                   ))}
                 </ul>
 
-                <button className="en-sv__miniCta" type="button" onClick={scrollToContact}>
+                <button className="en-sv__miniCta" type="button" onClick={goToContact}>
                   Demander un devis
                   <FaArrowRight />
                 </button>

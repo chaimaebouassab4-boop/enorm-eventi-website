@@ -1,75 +1,125 @@
-import React from 'react';
-import { MdLocationOn, MdEmail, MdWhatsapp, MdAccessTime } from 'react-icons/md';
-import { SubHeading } from '../../components';
+import React, { useEffect, useRef } from 'react';
+import { MdLocationOn, MdEmail, MdWhatsapp } from 'react-icons/md';
 import { images } from '../../constants';
 import './FindUs.css';
+import { useNavigate } from 'react-router-dom';
 
 const cards = [
   {
-    icon: <MdLocationOn color="#dcca87" size={22} />,
+    icon: <MdLocationOn size={18} />,
     title: "Zone d'Intervention",
     text: "Disponibles pour vos événements partout en Italie et à l'international. Devis personnalisé selon localisation.",
-    delay: '',
+    delay: 0,
+    number: '01',
   },
   {
-    icon: <MdAccessTime color="#dcca87" size={22} />,
-    title: 'Disponibilités',
-    text: "Lundi – Dimanche : 10h00 – 22h00. Événements en soirée et week-end. Réservation recommandée à l'avance.",
-    delay: 'delay-1',
-  },
-  {
-    icon: <MdEmail color="#dcca87" size={22} />,
+    icon: <MdEmail size={18} />,
     title: 'Email',
     text: 'contact@ENOMISeventi.com — Réponse garantie sous 24h pour toute demande de devis ou information.',
-    delay: 'delay-2',
+    delay: 160,
+    number: '02',
   },
   {
-    icon: <MdWhatsapp color="#dcca87" size={22} />,
+    icon: <MdWhatsapp size={18} />,
     title: 'WhatsApp',
     text: 'Contactez-nous directement sur WhatsApp pour un échange rapide et personnalisé.',
-    delay: 'delay-3',
+    delay: 240,
+    number: '03',
   },
 ];
 
-const FindUs = () => (
-  <div className="app__bg app__wrapper section__padding" id="contact">
+const FindUs = () => {
+  const sectionRef = useRef(null);
+  const navigate = useNavigate();
 
-    <div className="app__wrapper_info">
-      <div className="reveal from-left">
-        <SubHeading title="Venez Nous Rencontrer" />
-        <h1 className="headtext__cormorant" style={{ marginBottom: '1.5rem' }}>Nous Trouver</h1>
-      </div>
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add('fu--in-view');
+        });
+      },
+      { threshold: 0.06 }
+    );
 
-      <p className="p__opensans reveal from-left delay-1" style={{ marginBottom: '2rem', lineHeight: '1.8' }}>
-        ENOMIS EVENTI se déplace partout en Italie et à l'international pour sublimer
-        vos événements les plus précieux. Que ce soit un mariage en Toscane, une soirée
-        VIP à Milan ou un événement d'entreprise à Rome, nous sommes là pour vous.
-      </p>
+    const el = sectionRef.current;
+    if (el) observer.observe(el);
+    return () => el && observer.unobserve(el);
+  }, []);
 
-      <div className="app__findus-cards">
-        {cards.map((card) => (
-          <div key={card.title} className={`app__findus-card reveal from-left ${card.delay}`}>
-            <div className="app__findus-card_icon">{card.icon}</div>
-            <div>
-              <p className="p__cormorant" style={{ color: '#dcca87', fontSize: '1.1rem' }}>{card.title}</p>
-              <p className="p__opensans">{card.text}</p>
-            </div>
+  return (
+    <section className="fu" id="contact" ref={sectionRef}>
+      <div className="fu__grain" aria-hidden="true" />
+      <span className="fu__watermark" aria-hidden="true">ENOMIS</span>
+
+      <div className="fu__inner">
+        <div className="fu__left">
+          {/* <div className="fu__eyebrow">
+            <span className="fu__eyebrow-line" />
+            <span>Venez Nous Rencontrer</span>
+          </div> */}
+
+          <h2 className="fu__title">
+            Venez nous <em>rencontrer</em>
+          </h2>
+
+          <p className="fu__lead">
+            ENOMIS EVENTI se déplace partout en Italie et à l'international
+            pour sublimer vos événements les plus précieux — mariage en Toscane,
+            soirée VIP à Milan, événement d'entreprise à Rome.
+          </p>
+
+          <div className="fu__cards">
+            {cards.map((card) => (
+              <div className="fu__card" key={card.title} style={{ '--delay': `${card.delay}ms` }}>
+                <span className="fu__card-num">{card.number}</span>
+                <div className="fu__card-icon">{card.icon}</div>
+                <div className="fu__card-body">
+                  <p className="fu__card-title">{card.title}</p>
+                  <p className="fu__card-text">{card.text}</p>
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
+
+          <button
+            type="button"
+            className="fu__cta"
+            onClick={() => navigate('/contact?scroll=form')}
+          >
+            <span>Demander un Devis Gratuit</span>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M2.5 7h9M8 3.5l3.5 3.5L8 10.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+        </div>
+
+        <div className="fu__right">
+          <div className="fu__mosaic">
+            <div className="fu__photo fu__photo--a">
+              <img src={images.gallery05} alt="Événement ENOMIS" />
+              <div className="fu__photo-caption" />
+            </div>
+
+            <div className="fu__photo fu__photo--b">
+              <img src={images.gallery044} alt="Bar mobile vintage" />
+            </div>
+
+            <div className="fu__photo fu__photo--c">
+              <img src={images.gallery022} alt="Événement premium" />
+            </div>
+
+            <div className="fu__badge">
+              <span className="fu__badge-stars">★★★★★</span>
+              <span className="fu__badge-label">Excellence</span>
+            </div>
+
+            <div className="fu__deco-ring" aria-hidden="true" />
+          </div>
+        </div>
       </div>
-
-      <div className="reveal from-bottom delay-4" style={{ marginTop: '2rem' }}>
-        <button type="button" className="custom__button">Demander un Devis Gratuit</button>
-      </div>
-    </div>
-
-    <div className="app__wrapper_img reveal from-right delay-2">
-      <img src={images.gallery05}  alt="événement 1" />
-      <img src={images.gallery044} alt="événement 2" />
-      <img src={images.gallery022} alt="événement 3" />
-    </div>
-
-  </div>
-);
+    </section>
+  );
+};
 
 export default FindUs;

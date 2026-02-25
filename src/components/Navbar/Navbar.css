@@ -49,7 +49,7 @@
 
 /* ✅ FIX PRINCIPAL : logo limité à la hauteur de la navbar */
 .en-navbar__logo-img {
-  height: 180px;           /* ← ajuste cette valeur (54-60px recommandé) */
+  height: 56px;           /* logo contenu dans la navbar */
   width: auto;
   max-width: 180px;
   object-fit: contain;

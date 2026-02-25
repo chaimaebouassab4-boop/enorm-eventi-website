@@ -51,25 +51,42 @@
    LAYOUT INNER — deux colonnes côte à côte
    ════════════════════════════════════ */
 .hs__inner {
-  position: relative;
-  z-index: 3;
-  max-width: 1280px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 6rem 5rem 3rem;
-  box-sizing: border-box;
   display: flex;
-  align-items: center;
-  gap: 4rem;
+  align-items: flex-start !important;
+  padding-top: 20px !important;
+  position: relative;      /* ← CRITIQUE : passe au-dessus des overlays absolus */
+  z-index: 3;              /* ← Au-dessus de .hs__overlay (z-index:1) et .hs__grain (z-index:2) */
+  width: 100%;
   flex: 1;
 }
 
-/* ── Colonne gauche : texte ── */
 .hs__left {
-  flex: 0 0 52%;
-  max-width: 52%;
-  z-index: 2;
+  flex: 0 0 65%;
+  max-width: 800px; /* Assez de place pour que le titre s'étale */
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: left;
 }
+
+.hs__title {
+  /* Resserre l'espace entre les lignes du titre */
+  line-height: 1.1;
+  white-space: normal; /* S'assure que le texte peut s'étendre normalement */
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-size: clamp(2rem, 5vw, 4.5rem);
+}
+
+.hs__desc {
+  /* Permet au paragraphe de s'étaler */
+  max-width: 600px; 
+  line-height: 1.5;
+  margin-bottom: 30px;
+} 
+
 
 /* ── Colonne droite : images ── */
 .hs__right {
@@ -80,6 +97,7 @@
   flex-direction: column;
   gap: 1.2rem;
 }
+
 
 /* ════════════════════════════════════
    ANIMATIONS D'ENTRÉE — stagger
@@ -153,12 +171,13 @@
    ════════════════════════════════════ */
 .hs__title {
   font-family: 'Cormorant Upright', serif;
-  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-size: clamp(2rem, 5vw, 4.5rem);
   font-weight: 700;
   color: #ffffff;
-  line-height: 1.15;
-  margin: 0 0 1rem;
-  max-width: 600px;
+  line-height: 1.1;
+  white-space: normal;
+  margin: 10px 0 20px;
+  max-width: 800px; /* Élargi — supprime l'ancien 600px qui écrasait le titre */
 }
 
 .hs__title-accent {
@@ -499,7 +518,7 @@
    ════════════════════════════════════ */
 .hs__scroll {
   position: relative;
-  z-index: 3;
+  z-index: 4;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -563,4 +582,52 @@
   .hs__stat-sep { display: none; }
   .hs__title    { font-size: clamp(1.5rem, 8vw, 2rem); }
   .hs__gallery  { grid-template-columns: repeat(2, 1fr); }
+}
+
+
+.hs {
+  position: relative; /* Assurez-vous que le parent est en position relative */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centre le contenu principal */
+}
+
+.hs__scroll {
+  position: absolute; /* Fixe le bouton par rapport au bas de la section */
+  bottom: 20px;       /* Ajustez selon votre goût (plus c'est bas, moins il y a de vide) */
+  left: 50%;
+  transform: translateX(-50%);
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.hs__scroll:hover {
+  transform: translate(-50%, -5px); /* Petit effet au survol */
+}
+
+.hs__scroll-label {
+  font-family: var(--font-base); /* Votre police dorée */
+  color: var(--color-golden);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.hs__scroll-icon {
+  color: var(--color-golden);
+  animation: bounce 2s infinite;
+}
+
+/* Animation pour attirer l'oeil */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+  40% {transform: translateY(-8px);}
+  60% {transform: translateY(-4px);}
 }

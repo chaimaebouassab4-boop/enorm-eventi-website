@@ -1,66 +1,421 @@
-/* FindUs — palette ENOMIS EVENTI */
+/* ═══════════════════════════════════════════════════
+   FindUs.css — ENOMIS EVENTI — Section Contact Premium
+   ═══════════════════════════════════════════════════ */
 
-.app__findus-cards {
+/* ── Variables locales ── */
+.fu {
+  --fu-cream:    #F5EDE0;
+  --fu-dark:     #2C1810;
+  --fu-rose:     #b86b77;
+  --fu-gold:     #C9A96E;
+  --fu-gold-lt:  #dcca87;
+  --fu-text:     #6B4423;
+  --fu-border:   rgba(201, 169, 110, 0.22);
+  --fu-card-bg:  rgba(255, 255, 255, 0.62);
+
+  position: relative;
+  background: #F0E8D8;
+  padding: 4rem 5rem 5rem;      /* ✅ padding-top réduit — supprime le vide */
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* ── Grain décoratif ── */
+.fu__grain {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.028;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Filigrane texte fond ── */
+.fu__watermark {
+  position: absolute;
+  bottom: -2rem;
+  right: -1rem;
+  font-family: 'Cormorant Upright', serif;
+  font-size: clamp(6rem, 14vw, 13rem);
+  font-weight: 700;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(184, 107, 119, 0.10);
+  letter-spacing: 0.04em;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  line-height: 1;
+}
+
+/* ── Layout deux colonnes ── */
+.fu__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ════════════════════════
+   COLONNE GAUCHE
+   ════════════════════════ */
+.fu__left {
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: 0;
 }
 
-.app__findus-card {
+/* Eyebrow */
+.fu__eyebrow {
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 1rem;
-  background: #FAF6EF;
-  border: 1px solid #f6cfca;
-  border-radius: 6px;
-  padding: 1rem 1.2rem;
-  box-shadow: 0 4px 16px rgba(184,107,119,0.10);
-  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--fu-rose);
+  margin-bottom: 1rem;
 }
 
-.app__findus-card:hover {
-  border-color: #b86b77;
-  transform: translateY(-4px);
-  box-shadow: 0 8px 32px rgba(184,107,119,0.18);
-}
-
-.app__findus-card_icon {
-  margin-top: 2px;
+.fu__eyebrow-line {
+  display: block;
+  width: 28px;
+  height: 1.5px;
+  background: var(--fu-rose);
   flex-shrink: 0;
 }
 
-.app__findus-card .p__cormorant {
-  display: block;
-  margin-bottom: 0.25rem;
-  color: #b86b77;
+/* Titre */
+.fu__title {
+  font-family: 'Cormorant Upright', serif;
+  font-size: clamp(2.4rem, 4vw, 3.6rem);
+  font-weight: 700;
+  color: var(--fu-dark);
+  line-height: 1.08;
+  margin: 0 0 1.4rem;
 }
 
-.app__findus-card .p__opensans {
-  margin: 0;
-  line-height: 1.6;
-  color: #6B4423;
+.fu__title em {
+  font-style: italic;
+  color: var(--fu-rose);
 }
 
-.app__findus-card_icon svg {
-  color: #4A7FA5 !important;
-  fill: #4A7FA5 !important;
+/* Lead text */
+.fu__lead {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.82;
+  color: var(--fu-text);
+  margin: 0 0 2.2rem;
+  max-width: 440px;
 }
 
-.app__wrapper_img {
+/* ── Cards d'info ── */
+.fu__cards {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 0;
+  margin-bottom: 2.4rem;
 }
 
-.app__wrapper_img img {
+.fu__card {
+  display: grid;
+  grid-template-columns: 28px 36px 1fr;
+  align-items: start;
+  gap: 0 0.8rem;
+  padding: 1.1rem 1.2rem;
+  border-bottom: 1px solid var(--fu-border);
+  transition: background 0.25s ease, transform 0.25s ease;
+  border-radius: 0;
+  cursor: default;
+
+  /* Animation au scroll */
+  opacity: 0;
+  transform: translateX(-18px);
+  transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1) var(--delay, 0ms),
+              transform 0.55s cubic-bezier(0.22, 1, 0.36, 1) var(--delay, 0ms),
+              background 0.25s ease;
+}
+
+.fu--in-view .fu__card {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.fu__cards .fu__card:first-child {
+  border-top: 1px solid var(--fu-border);
+}
+
+.fu__card:hover {
+  background: rgba(255, 255, 255, 0.5);
+  padding-left: 1.6rem;
+}
+
+/* Numéro */
+.fu__card-num {
+  font-family: 'Cormorant Upright', serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: rgba(201, 169, 110, 0.55);
+  letter-spacing: 0.04em;
+  padding-top: 3px;
+  line-height: 1;
+}
+
+/* Icône */
+.fu__card-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--fu-rose), #d2aba6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+/* Texte */
+.fu__card-title {
+  font-family: 'Cormorant Upright', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--fu-dark);
+  margin: 0 0 0.2rem;
+  line-height: 1.2;
+}
+
+.fu__card-text {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.78rem;
+  line-height: 1.68;
+  color: var(--fu-text);
+  margin: 0;
+}
+
+/* ── CTA ── */
+.fu__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #fff;
+  background: linear-gradient(135deg, var(--fu-rose) 0%, #a8515e 100%);
+  border: none;
+  border-radius: 999px;
+  padding: 0.75rem 1.8rem;
+  cursor: pointer;
+  align-self: flex-start;
+  box-shadow: 0 6px 24px rgba(184, 107, 119, 0.35);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+}
+
+.fu__cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 36px rgba(184, 107, 119, 0.50);
+  filter: brightness(1.05);
+}
+
+.fu__cta svg {
+  transition: transform 0.2s ease;
+}
+
+.fu__cta:hover svg {
+  transform: translateX(4px);
+}
+
+/* ════════════════════════
+   COLONNE DROITE — mosaïque
+   ════════════════════════ */
+.fu__right {
+  position: relative;
+  align-self: stretch;
+}
+
+.fu__mosaic {
+  position: relative;
+  height: 520px;
+}
+
+/* Photos */
+.fu__photo {
+  position: absolute;
+  overflow: hidden;
+  border-radius: 14px;
+  box-shadow: 0 16px 48px rgba(44, 24, 16, 0.22);
+
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.fu--in-view .fu__photo { opacity: 1; transform: translateY(0); }
+
+.fu__photo img {
   width: 100%;
-  border-radius: 4px;
+  height: 100%;
   object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
 }
 
-@media screen and (max-width: 650px) {
-  .app__findus-cards {
-    margin-top: 2rem;
+.fu__photo:hover img {
+  transform: scale(1.06);
+}
+
+/* Photo A — grande, en haut à droite */
+.fu__photo--a {
+  top: 0;
+  right: 0;
+  width: 72%;
+  height: 58%;
+  transition-delay: 0.05s;
+}
+
+/* Photo B — petite, en bas à gauche */
+.fu__photo--b {
+  bottom: 0;
+  left: 0;
+  width: 48%;
+  height: 44%;
+  transition-delay: 0.2s;
+  border-radius: 14px 14px 14px 24px;
+}
+
+/* Photo C — chevauchante, milieu droite-bas */
+.fu__photo--c {
+  bottom: 2%;
+  right: 2%;
+  width: 46%;
+  height: 40%;
+  transition-delay: 0.35s;
+  border: 3px solid #F0E8D8;
+}
+
+/* Caption photo A */
+.fu__photo-caption {
+  position: absolute;
+  bottom: 10px;
+  left: 12px;
+  background: rgba(44, 24, 16, 0.65);
+  backdrop-filter: blur(8px);
+  border-radius: 6px;
+  padding: 0.25rem 0.65rem;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fu-gold-lt);
+}
+
+/* Badge flottant ★ */
+.fu__badge {
+  position: absolute;
+  top: 52%;
+  left: 6%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(201, 169, 110, 0.35);
+  border-radius: 12px;
+  padding: 0.55rem 1rem;
+  box-shadow: 0 8px 24px rgba(44, 24, 16, 0.12);
+  z-index: 4;
+
+  opacity: 0;
+  transform: scale(0.85);
+  transition: opacity 0.5s ease 0.6s, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.6s;
+}
+
+.fu--in-view .fu__badge {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.fu__badge-stars {
+  font-size: 0.72rem;
+  color: var(--fu-gold);
+  letter-spacing: 0.05em;
+}
+
+.fu__badge-label {
+  font-family: 'Cormorant Upright', serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--fu-dark);
+  letter-spacing: 0.06em;
+}
+
+/* Anneau décoratif doré */
+.fu__deco-ring {
+  position: absolute;
+  top: -24px;
+  left: -24px;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 2px solid rgba(201, 169, 110, 0.28);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.fu__deco-ring::after {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border-radius: 50%;
+  border: 1px solid rgba(201, 169, 110, 0.15);
+}
+
+/* ════════════════════════
+   RESPONSIVE
+   ════════════════════════ */
+@media screen and (max-width: 1100px) {
+  .fu {
+    padding: 3.5rem 3rem 4rem;
+  }
+  .fu__inner {
+    gap: 2.5rem;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .fu {
+    padding: 3rem 2rem 3.5rem;
+  }
+  .fu__inner {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .fu__mosaic {
+    height: 380px;
+  }
+  .fu__lead {
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .fu {
+    padding: 2.5rem 1.5rem 3rem;
+  }
+  .fu__mosaic {
+    height: 300px;
+  }
+  .fu__title {
+    font-size: clamp(2rem, 8vw, 2.8rem);
   }
 }

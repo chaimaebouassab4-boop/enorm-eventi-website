@@ -20,6 +20,12 @@ const fallback = {
   overlay_sub: 'Fiat 500 Vintage',
   scroll_label: 'Découvrir',
 };
+const scrollToAbout = () => {
+  window.scrollTo({
+    top: window.innerHeight, // Fait défiler d'une hauteur d'écran
+    behavior: 'smooth'
+  });
+};
 
 const Hero = () => {
   const { t, ready } = useTranslation();
@@ -134,12 +140,12 @@ const Hero = () => {
       </div>
 
       {/* ── Scroll indicator ── */}
-      <div className="hs__scroll">
-        <span className="hs__scroll-label">{tx('scroll_label')}</span>
-        <div className="hs__scroll-icon">
-          <MdKeyboardArrowDown size={22} />
-        </div>
-      </div>
+      <div className="hs__scroll" onClick={scrollToAbout} style={{ cursor: 'pointer' }}>
+  <span className="hs__scroll-label">{tx('scroll_label')}</span>
+  <div className="hs__scroll-icon">
+    <MdKeyboardArrowDown size={22} />
+  </div>
+</div>
 
     </section>
   );

@@ -19,7 +19,7 @@ import gallery05 from '../assets/gallery01.png';
 import grain from '../assets/grainn.png';
 
 import logoImg from '../assets/logo.png';
-import menu from '../assets/menu.png';  
+import menu from '../assets/sapapa.png';  
 import overlaybg from '../assets/overlaybg.png';
 import spoon from '../assets/spoon.svg';
 import welcome from '../assets/welcome.jpeg';

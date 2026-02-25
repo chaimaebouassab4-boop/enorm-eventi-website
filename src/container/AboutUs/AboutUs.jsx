@@ -4,13 +4,13 @@ import './AboutUs.css';
 
 const AboutUs = () => (
   <div className="app__aboutus app__bg flex__center section__padding" id="about">
-
-  
-
     <div className="app__aboutus-content flex__center">
 
-      {/* ── GAUCHE : texte fusionné, sans boutons ── */}
-      <div className="app__aboutus-content_about reveal from-left">
+      {/* ── Texte À Propos ── */}
+      <div
+        className="app__aboutus-content_about reveal from-right"
+        style={{ textAlign: 'left', alignItems: 'flex-start' }}
+      >
         <h1 className="headtext__cormorant">À Propos</h1>
         <img src={images.spoon} alt="spoon" className="spoon__img" />
 
@@ -21,20 +21,20 @@ const AboutUs = () => (
           chic, chaleureuse et mémorable.
         </p>
 
-        <p className="p__opensans app__aboutus-p2">
+        <p className="p__opensans app__aboutus-p2" style={{ fontStyle: 'italic', marginTop: '1rem' }}>
           Nous intervenons pour tous vos moments précieux : Mariages, Fêtes privées,
           Anniversaires, Événements d'entreprise, Inaugurations et Soirées VIP.
           Chaque prestation est unique, personnalisée et pensée pour dépasser vos attentes.
         </p>
       </div>
 
-      {/* ── SÉPARATEUR ligne rosée (sans image couteau) ── */}
+      {/* ── Séparateur ── */}
       <div className="app__aboutus-content_knife flex__center reveal zoom-in delay-2" />
 
-      {/* ── DROITE : image ── */}
+      {/* ── Image droite ── */}
       <div className="app__aboutus-content_image reveal from-right delay-1">
         <img
-          src={require('../../assets/ChatGPT Image Feb 19, 2026, 02_56_31 PM.png')}
+          src={images.welcome}
           alt="ENOMIS EVENTI événement"
           className="app__aboutus-photo"
         />

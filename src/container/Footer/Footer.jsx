@@ -1,40 +1,37 @@
 import React from 'react';
 import { FiFacebook, FiTwitter, FiInstagram } from 'react-icons/fi';
 import { MdLocationOn, MdEmail, MdWhatsapp } from 'react-icons/md';
-import { FooterOverlay } from '../../components';
 import { images } from '../../constants';
 import './Footer.css';
 
 const Footer = () => (
-  <div className="app__footer section__padding" id="login">
-    <FooterOverlay />
-
+  <div className="app__footer" id="login">
     <div className="app__footer-links">
       <div className="app__footer-links_contact">
         <h1 className="app__footer-headtext">Contactez-Nous</h1>
 
         <div className="app__footer-contact-item">
-          <MdLocationOn color="#dcca87" size={18} />
+          <MdLocationOn color="#b86b77" size={18} />
           <p className="p__opensans">Italie &amp; International</p>
         </div>
 
         <div className="app__footer-contact-item">
-          <MdEmail color="#dcca87" size={18} />
+          <MdEmail color="#b86b77" size={18} />
           <p className="p__opensans">contact@ENOMISeventi.com</p>
         </div>
 
         <div className="app__footer-contact-item">
-          <MdWhatsapp color="#dcca87" size={18} />
+          <MdWhatsapp color="#b86b77" size={18} />
           <p className="p__opensans">Disponible sur WhatsApp</p>
         </div>
       </div>
 
       <div className="app__footer-links_logo">
-        <p className="app__footer-logo-text">ENOMIS EVENTI</p>
-        <p className="p__opensans" style={{ color: '#aaa', marginTop: '0.5rem' }}>
-          &quot;L'élégance au cœur de vos événements&quot;
+        <h1 className="app__footer-headtext">ENOMIS EVENTI</h1>
+        <p className="p__opensans">
+          "L'élégance au cœur de vos événements"
         </p>
-        <img src={images.spoon} className="spoon__img" style={{ marginTop: 15 }} alt="spoon" />
+        <img src={images.spoon} className="spoon__img" alt="spoon" />
         <div className="app__footer-links_icons">
           <FiFacebook />
           <FiTwitter />

@@ -1,9 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import {
+  FaClock,
+  FaCommentDots,
+  FaEnvelope,
+  FaMapMarkerAlt,
+  FaPaperPlane,
+  FaPhoneAlt,
+  FaUser,
+  FaWhatsapp,
+} from "react-icons/fa";
 import "./ContactSection.css";
 
 const ContactSection = () => {
   const { t } = useTranslation();
+  const location = useLocation();
 
   const [form, setForm] = useState({
     fullName: "",
@@ -12,6 +24,16 @@ const ContactSection = () => {
     message: "",
   });
 
+  /* ✅ Scroll vers le formulaire si ?scroll=form */
+  useEffect(() => {
+    if (location.search.includes("scroll=form")) {
+      setTimeout(() => {
+        const el = document.getElementById("contact-form");
+        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 150);
+    }
+  }, [location]);
+
   const onChange = (e) => {
     const { name, value } = e.target;
     setForm((p) => ({ ...p, [name]: value }));
@@ -19,63 +41,48 @@ const ContactSection = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-
-    // TODO: connect to your backend / email service
-    // For now: basic guard
     if (!form.fullName || !form.email || !form.message) return;
-
     console.log("Contact form submit:", form);
     alert(t("contact.sent", "Message envoyé ! Nous vous contacterons bientôt."));
     setForm({ fullName: "", email: "", phone: "", message: "" });
   };
 
-  // ✅ Remplace par ton numéro WhatsApp (format international sans + ni espaces)
   const whatsappNumber = "212600000000";
   const whatsappText = encodeURIComponent(
-    "Bonjour ENOMIS EVENTI, je souhaite demander un devis pour mon événement."
+    "Bonjour ENOMIS EVENTI, je souhaite demander un devis pour mon evenement."
   );
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappText}`;
-
-  // ✅ Remplace par ton embed Google Maps (ou un iframe autre)
-  const mapEmbedSrc =
-    "https://www.google.com/maps?q=Roma&output=embed";
+  const mapEmbedSrc = "https://www.google.com/maps?q=Roma&output=embed";
 
   return (
     <section className="en-contact" id="contact">
       <div className="en-contact__container">
         <div className="en-contact__header">
-          <p className="en-contact__kicker">
-            {t("contact.kicker", "Contact")}
-          </p>
-          <h2 className="en-contact__title">
-            {t("contact.title", "Demander un devis")}
-          </h2>
+          <p className="en-contact__kicker">Contact</p>
+          <h2 className="en-contact__title">Demander un devis</h2>
           <p className="en-contact__subtitle">
-            {t(
-              "contact.subtitle",
-              "Remplissez le formulaire ci-dessous et nous vous répondrons rapidement."
-            )}
+            Remplissez le formulaire et nous vous répondrons sous 24h.
           </p>
         </div>
 
         <div className="en-contact__grid">
-          {/* LEFT: form */}
           <div className="en-contact__panel">
             <h3 className="en-contact__panelTitle">
-              {t("contact.formTitle", "Envoyez-nous un message")}
+              <FaEnvelope aria-hidden="true" />
+              Envoyez-nous un message
             </h3>
 
-            <form id="contact-form" className="en-contact__form" onSubmit={onSubmit}>
+            <form className="en-contact__form" id="contact-form" onSubmit={onSubmit}>
               <label className="en-field">
                 <span className="en-field__label">
-                  {t("contact.fullName", "Nom complet")}
+                  <FaUser aria-hidden="true" /> Nom complet
                 </span>
                 <input
                   className="en-field__input"
                   name="fullName"
                   value={form.fullName}
                   onChange={onChange}
-                  placeholder={t("contact.fullNamePh", "Votre nom")}
+                  placeholder="Votre nom..."
                   autoComplete="name"
                   required
                 />
@@ -83,7 +90,7 @@ const ContactSection = () => {
 
               <label className="en-field">
                 <span className="en-field__label">
-                  {t("contact.email", "Email")}
+                  <FaEnvelope aria-hidden="true" /> Email
                 </span>
                 <input
                   className="en-field__input"
@@ -91,65 +98,63 @@ const ContactSection = () => {
                   type="email"
                   value={form.email}
                   onChange={onChange}
-                  placeholder={t("contact.emailPh", "votre@email.com")}
+                  placeholder="votre@email.com"
                   autoComplete="email"
                   required
                 />
               </label>
 
-              <div className="en-field en-field--phone">
-                <label className="en-field__wrap">
-                  <span className="en-field__label">
-                    {t("contact.phone", "Téléphone")}
-                  </span>
+              <div className="en-field">
+                <span className="en-field__label">
+                  <FaPhoneAlt aria-hidden="true" /> Téléphone
+                </span>
+                <div className="en-phone-row">
                   <input
                     className="en-field__input"
                     name="phone"
                     value={form.phone}
                     onChange={onChange}
-                    placeholder={t("contact.phonePh", "+39 ...")}
+                    placeholder="+39 ..."
                     autoComplete="tel"
                   />
-                </label>
-
-                <a
-                  className="en-whatsapp"
-                  href={whatsappLink}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="WhatsApp"
-                  title="WhatsApp"
-                >
-                  WA
-                </a>
+                  <a
+                    className="en-whatsapp"
+                    href={whatsappLink}
+                    target="_blank"
+                    rel="noreferrer"
+                    title="Contactez-nous sur WhatsApp"
+                  >
+                    <FaWhatsapp aria-hidden="true" />
+                    WhatsApp
+                  </a>
+                </div>
               </div>
 
               <label className="en-field">
                 <span className="en-field__label">
-                  {t("contact.message", "Message")}
+                  <FaCommentDots aria-hidden="true" /> Message
                 </span>
                 <textarea
                   className="en-field__textarea"
                   name="message"
                   value={form.message}
                   onChange={onChange}
-                  placeholder={t("contact.messagePh", "Décrivez votre besoin...")}
-                  rows={6}
+                  placeholder="Décrivez votre événement de rêve..."
+                  rows={4}
                   required
                 />
               </label>
 
               <button className="en-btn en-btn--primary" type="submit">
-                {t("contact.send", "Envoyer le message")}
+                <FaPaperPlane aria-hidden="true" /> Envoyer le message
               </button>
             </form>
           </div>
 
-          {/* RIGHT: map + info cards */}
           <div className="en-contact__side">
             <div className="en-map">
               <iframe
-                title="Map"
+                title="Map ENOMIS EVENTI"
                 src={mapEmbedSrc}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
@@ -158,53 +163,44 @@ const ContactSection = () => {
 
             <div className="en-infoCard">
               <h3 className="en-infoCard__title">
-                {t("contact.infoTitle", "Informations de contact")}
+                <FaPhoneAlt aria-hidden="true" /> Informations de contact
               </h3>
 
               <div className="en-infoList">
                 <div className="en-infoItem">
-                  <div className="en-infoIcon">☎</div>
+                  <div className="en-infoIcon"><FaPhoneAlt /></div>
                   <div>
-                    <div className="en-infoLabel">{t("contact.phone", "Téléphone")}</div>
-                    <a className="en-infoValue" href="tel:+39000000000">
-                      +39 000 000 000
-                    </a>
+                    <div className="en-infoLabel">Téléphone</div>
+                    <a className="en-infoValue" href="tel:+39000000000">+39 000 000 000</a>
                   </div>
                 </div>
-
                 <div className="en-infoItem">
-                  <div className="en-infoIcon">✉</div>
+                  <div className="en-infoIcon"><FaEnvelope /></div>
                   <div>
-                    <div className="en-infoLabel">{t("contact.email", "Email")}</div>
+                    <div className="en-infoLabel">Email</div>
                     <a className="en-infoValue" href="mailto:contact@enomiseventi.com">
                       contact@enomiseventi.com
                     </a>
                   </div>
                 </div>
-
                 <div className="en-infoItem">
-                  <div className="en-infoIcon">⌁</div>
+                  <div className="en-infoIcon"><FaMapMarkerAlt /></div>
                   <div>
-                    <div className="en-infoLabel">{t("contact.address", "Adresse")}</div>
-                    <div className="en-infoValue">
-                      {t("contact.addressValue", "Italie (déplacements sur demande)")}
-                    </div>
+                    <div className="en-infoLabel">Zone</div>
+                    <div className="en-infoValue">Italie &amp; International</div>
                   </div>
                 </div>
-
                 <div className="en-infoItem">
-                  <div className="en-infoIcon">⏱</div>
+                  <div className="en-infoIcon"><FaClock /></div>
                   <div>
-                    <div className="en-infoLabel">{t("contact.hours", "Horaires")}</div>
-                    <div className="en-infoValue">
-                      {t("contact.hoursValue", "Lun–Sam : 09:00–19:00")}
-                    </div>
+                    <div className="en-infoLabel">Horaires</div>
+                    <div className="en-infoValue">Lun-Sam : 09:00-19:00</div>
                   </div>
                 </div>
               </div>
 
               <a className="en-btn en-btn--ghost" href={whatsappLink} target="_blank" rel="noreferrer">
-                {t("contact.ctaWhatsapp", "WhatsApp : obtenir un devis")}
+                <FaWhatsapp aria-hidden="true" /> WhatsApp - devis rapide
               </a>
             </div>
           </div>
