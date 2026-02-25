@@ -49,9 +49,9 @@
 
 /* ✅ FIX PRINCIPAL : logo limité à la hauteur de la navbar */
 .en-navbar__logo-img {
-  height: 56px;           /* logo contenu dans la navbar */
+  height: 72px;           /* logo principal agrandi */
   width: auto;
-  max-width: 180px;
+  max-width: 240px;
   object-fit: contain;
   display: block;
   transition: transform 0.3s ease;
@@ -317,8 +317,8 @@
 }
 
 @media screen and (max-width: 768px) {
-  .en-navbar__inner { padding: 0 1.2rem; height: 62px; }
-  .en-navbar__logo-img { height: 46px; max-width: 150px; }
+  .en-navbar__inner { padding: 0 1.2rem; height: 68px; }
+  .en-navbar__logo-img { height: 56px; max-width: 190px; }
 }
 
 /* ════════════════════════════

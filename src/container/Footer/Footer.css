@@ -1,24 +1,15 @@
 .app__footer {
-    width: 100%;
-    position: relative;
-    z-index: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background: linear-gradient(180deg, #F5EDE3 0%, #F0E8D8 100%) !important;
-    border-top: 1px solid #e0d5c8 !important;
-    padding: 3rem 1.5rem 2rem;
+    background: linear-gradient(180deg, #D4C4B0 0%, #B8A898 50%, #9E8878 100%) !important;
+    border-top: 1px solid #a0907e !important;
+    padding: 3rem 2rem 2rem;  /* assure un padding uniforme */
 }
-
 .app__footer-links {
     width: 100%;
-    max-width: 1000px;
+    max-width: 1200px;   /* augmente la largeur max */
+    margin: 0 auto;      /* ← CENTRE le conteneur */
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-top: 0;
-    padding: 0;
     gap: 2rem;
 }
 
@@ -51,23 +42,22 @@
     margin-top: 1rem;
     display: flex;
     justify-content: center;
-    gap: 1rem;
+    gap: 1.2rem;
 }
 
+/* Icônes sociales plus grandes */
 .app__footer-links_icons svg {
-    color: #8B6B5B !important;
-    font-size: 22px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    padding: 8px;
-    border-radius: 50%;
-    background: rgba(139, 107, 91, 0.1);
+    color: #3D2410 !important;
+    font-size: 48px;
+    width: 48px;
+    height: 48px;
+    padding: 14px;
+    background: rgba(255, 255, 255, 0.2);
 }
-
 .app__footer-links_icons svg:hover {
-    color: #b86b77 !important;
-    background: rgba(184, 107, 119, 0.15);
-    transform: translateY(-2px);
+    color: #fff !important;
+    background: rgba(184, 107, 119, 0.5);
+    transform: translateY(-3px);
 }
 
 .app__footer-headtext {
@@ -111,9 +101,11 @@
 .footer__copyright {
     margin-top: 3rem;
     padding-top: 1.5rem;
-    border-top: 1px solid rgba(107, 68, 35, 0.15);
+    border-top: 1px solid rgba(62, 36, 16, 0.3);
     width: 100%;
-    max-width: 1000px;
+    max-width: 1200px;
+    margin-left: auto;   /* ← CENTRE le copyright aussi */
+    margin-right: auto;
     text-align: center;
 }
 
@@ -191,14 +183,14 @@
 .app__footer-logo-text {
     font-family: var(--font-base);
     color: #3D2410 !important;
-    font-size: 1.4rem;
+    font-size: 2rem;
     font-weight: 600;
     letter-spacing: 0.08em;
     margin-bottom: 0.5rem;
 }
 
 .spoon__img {
-    width: 30px !important;
+    width: 45px !important;
     height: auto;
     opacity: 0.6;
     margin: 0.75rem 0 !important;

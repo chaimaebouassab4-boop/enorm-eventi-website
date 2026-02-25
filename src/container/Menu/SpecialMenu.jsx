@@ -64,11 +64,16 @@ const SpecialMenu = () => {
           </div>
         </div>
 
-        {/* Centre : Image */}
-        <div className="app__specialMenu-menu_img reveal zoom-in delay-2">
-          <div className="img-glow-effect"></div>
-          <img src={images.menu} alt="Menu ENOMIS EVENTI" loading="lazy" />
-        </div>
+      {/* Centre : Images */}
+{/* Centre : Images en grille 2x2 */}
+<div className="app__specialMenu-menu_img reveal zoom-in delay-2">
+  <div className="app__specialMenu-menu_img-gallery">
+    <img src={images.whatsapp1} alt="ENOMIS EVENTI 1" loading="lazy" />
+    <img src={images.whatsapp2} alt="ENOMIS EVENTI 2" loading="lazy" />
+    <img src={images.whatsapp3} alt="ENOMIS EVENTI 3" loading="lazy" />
+    <img src={images.menu}      alt="ENOMIS EVENTI 4" loading="lazy" />
+  </div>
+</div>
 
         {/* Colonne Droite : Cocktails */}
         <div className="app__specialMenu-menu_cocktails reveal from-right delay-1">

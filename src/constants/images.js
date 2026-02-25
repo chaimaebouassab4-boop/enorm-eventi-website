@@ -17,7 +17,9 @@ import gallery001 from '../assets/WhatsApp Image 2026-02-19 at 13.47.39.jpeg';
 import gallery044 from '../assets/WhatsApp Image 2026-02-19 at 13.47.40 (1).jpeg';
 import gallery05 from '../assets/gallery01.png';
 import grain from '../assets/grainn.png';
-
+import whatsapp1 from '../assets/WhatsApp Image 2026-02-19 at 13.47.40 (1).jpeg';
+import whatsapp2 from '../assets/WhatsApp Image 2026-02-19 at 13.34.35.jpeg';
+import whatsapp3 from '../assets/WhatsApp Image 2026-02-19 at 13.47.39.jpeg';
 import logoImg from '../assets/logo.png';
 import menu from '../assets/sapapa.png';  
 import overlaybg from '../assets/overlaybg.png';
@@ -37,6 +39,9 @@ export default {
   bg,
   chef,
   gallery01,
+   whatsapp1,
+  whatsapp2,
+  whatsapp3,
    logo,
   fiat500,
   cocktails,

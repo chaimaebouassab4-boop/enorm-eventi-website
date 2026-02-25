@@ -11,17 +11,17 @@ const Footer = () => (
         <h1 className="app__footer-headtext">Contactez-Nous</h1>
 
         <div className="app__footer-contact-item">
-          <MdLocationOn color="#b86b77" size={18} />
+          <MdLocationOn color="#b86b77"  size={32} />
           <p className="p__opensans">Italie &amp; International</p>
         </div>
 
         <div className="app__footer-contact-item">
-          <MdEmail color="#b86b77" size={18} />
+          <MdEmail color="#b86b77"  size={32} />
           <p className="p__opensans">contact@ENOMISeventi.com</p>
         </div>
 
         <div className="app__footer-contact-item">
-          <MdWhatsapp color="#b86b77" size={18} />
+          <MdWhatsapp color="#b86b77"  size={32} />
           <p className="p__opensans">Disponible sur WhatsApp</p>
         </div>
       </div>

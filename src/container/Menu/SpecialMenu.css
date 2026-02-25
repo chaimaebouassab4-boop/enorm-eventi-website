@@ -33,14 +33,16 @@
   letter-spacing: -0.5px;
 }
 
+/* ── Layout principal : 3 colonnes côte à côte ── */
 .app__specialMenu-menu {
   width: 100%;
-  margin: 3rem 0;
+  max-width: 1300px;
+  margin: 2rem auto;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: row;
-  gap: 2rem;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2.5rem;
   position: relative;
   z-index: 1;
 }
@@ -68,29 +70,48 @@
   border-radius: 2px;
 }
 
+/* ── Colonnes vins / cocktails ── */
 .app__specialMenu-menu_wine,
 .app__specialMenu-menu_cocktails {
   flex: 1;
+  min-width: 0;
+  max-width: 320px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  min-width: 300px;
 }
 
+/* ── Conteneur centre ── */
 .app__specialMenu-menu_img {
-  width: 380px;
-  margin: 0 1rem;
+  width: 400px;
+  margin: 0 1.5rem;
   position: relative;
   z-index: 2;
-  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.1));
-  transform: perspective(1000px) rotateY(-2deg);
+  flex-shrink: 0;
 }
 
-.app__specialMenu-menu_img img {
+/* ── Grille 2×2 ── */
+.app__specialMenu-menu_img-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 10px;
   width: 100%;
-  height: auto;
-  border-radius: 12px;
+}
+
+.app__specialMenu-menu_img-gallery img {
+  width: 100%;
+  height: 180px;
   object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: block;
+}
+
+.app__specialMenu-menu_img-gallery img:hover {
+  transform: scale(1.04);
+  box-shadow: 0 10px 30px rgba(184, 107, 119, 0.3);
 }
 
 .app__specialMenu_menu_items {
@@ -112,185 +133,7 @@
   border-radius: 1px;
 }
 
-@media screen and (min-width: 2000px) {
-  .app__specialMenu-menu_img {
-    width: 580px;
-  }
-
-  .app__specialMenu-menu_img img {
-    height: 700px;
-  }
-
-  .app__specialMenu-menu_wine,
-  .app__specialMenu-menu_cocktails {
-    min-width: 400px;
-  }
-}
-
-@media screen and (max-width: 1200px) {
-  .app__specialMenu-menu {
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    gap: 2.5rem;
-  }
-
-  .app__specialMenu-menu_img {
-    margin: 1.5rem 0;
-    width: 320px;
-    transform: perspective(1000px) rotateY(0deg);
-  }
-
-  .app__specialMenu-menu_wine,
-  .app__specialMenu-menu_cocktails {
-    width: 100%;
-    align-items: center;
-    text-align: center;
-  }
-
-  .app__specialMenu-menu_heading::after {
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80%;
-  }
-
-  .app__specialMenu_menu_items::before {
-    display: none;
-  }
-
-  .app__specialMenu_menu_items {
-    width: 100%;
-    max-width: 450px;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .app__specialMenu-menu_img {
-    width: 100%;
-    max-width: 320px;
-  }
-
-  .app__specialMenu-menu_heading {
-    font-size: clamp(1.5rem, 5vw, 2.2rem);
-  }
-
-  .app__specialMenu-menu {
-    gap: 1.5rem;
-    margin: 2rem 0;
-  }
-
-  .app__specialMenu-title {
-    margin-bottom: 2rem;
-  }
-
-  .app__specialMenu-title h1 {
-    font-size: clamp(1.5rem, 6vw, 2.5rem);
-  }
-}
-
-@media screen and (max-width: 500px) {
-  .app__specialMenu-menu_img {
-    margin: 1rem 0;
-    max-width: 100%;
-  }
-
-  .app__specialMenu_menu_items {
-    gap: 1rem;
-  }
-
-  .app__specialMenu-menu_heading {
-    font-size: clamp(1.3rem, 5vw, 1.8rem);
-    margin-bottom: 1.5rem;
-  }
-}
-
-/* Animation utilities */
-.reveal {
-  opacity: 0;
-  animation: revealFade 0.8s ease-out forwards;
-}
-
-.reveal.from-bottom {
-  animation: revealFromBottom 0.8s ease-out forwards;
-}
-
-.reveal.from-left {
-  animation: revealFromLeft 0.8s ease-out forwards;
-}
-
-.reveal.from-right {
-  animation: revealFromRight 0.8s ease-out forwards;
-}
-
-.reveal.zoom-in {
-  animation: zoomInReveal 0.8s ease-out forwards;
-}
-
-.reveal.delay-1 {
-  animation-delay: 0.2s;
-}
-
-.reveal.delay-2 {
-  animation-delay: 0.4s;
-}
-
-.reveal.delay-3 {
-  animation-delay: 0.6s;
-}
-
-@keyframes revealFade {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes revealFromBottom {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes revealFromLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes revealFromRight {
-  from {
-    opacity: 0;
-    transform: translateX(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes zoomInReveal {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
+/* ── Bouton ── */
 .custom__button {
   background: linear-gradient(135deg, #b86b77 0%, #a85566 100%);
   color: white;
@@ -313,4 +156,157 @@
 
 .custom__button:active {
   transform: translateY(0);
+}
+
+/* ── Animations ── */
+.reveal {
+  opacity: 0;
+  animation: revealFade 0.8s ease-out forwards;
+}
+
+.reveal.from-bottom {
+  animation: revealFromBottom 0.8s ease-out forwards;
+}
+
+.reveal.from-left {
+  animation: revealFromLeft 0.8s ease-out forwards;
+}
+
+.reveal.from-right {
+  animation: revealFromRight 0.8s ease-out forwards;
+}
+
+.reveal.zoom-in {
+  animation: zoomInReveal 0.8s ease-out forwards;
+}
+
+.reveal.delay-1 { animation-delay: 0.2s; }
+.reveal.delay-2 { animation-delay: 0.4s; }
+.reveal.delay-3 { animation-delay: 0.6s; }
+
+@keyframes revealFade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes revealFromBottom {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+@keyframes revealFromLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0);     }
+}
+
+@keyframes revealFromRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0);    }
+}
+
+@keyframes zoomInReveal {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1);    }
+}
+
+/* ── Responsive 2000px+ ── */
+@media screen and (min-width: 2000px) {
+  .app__specialMenu-menu_img {
+    width: 580px;
+  }
+
+  .app__specialMenu-menu_img-gallery img {
+    height: 260px;
+  }
+
+  .app__specialMenu-menu_wine,
+  .app__specialMenu-menu_cocktails {
+    max-width: 450px;
+  }
+}
+
+/* ── Responsive tablette ── */
+@media screen and (max-width: 1100px) {
+  .app__specialMenu-menu {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .app__specialMenu-menu_img {
+    width: 360px;
+    margin: 0;
+  }
+
+  .app__specialMenu-menu_img-gallery img {
+    height: 150px;
+  }
+
+  .app__specialMenu-menu_wine,
+  .app__specialMenu-menu_cocktails {
+    max-width: 500px;
+    width: 100%;
+    align-items: center;
+    text-align: center;
+  }
+
+  .app__specialMenu-menu_heading::after {
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+  }
+
+  .app__specialMenu_menu_items::before {
+    display: none;
+  }
+
+  .app__specialMenu_menu_items {
+    width: 100%;
+    max-width: 450px;
+  }
+}
+
+/* ── Responsive mobile ── */
+@media screen and (max-width: 768px) {
+  .app__specialMenu-menu_heading {
+    font-size: clamp(1.5rem, 5vw, 2.2rem);
+  }
+
+  .app__specialMenu-menu {
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .app__specialMenu-title {
+    margin-bottom: 2rem;
+  }
+
+  .app__specialMenu-title h1 {
+    font-size: clamp(1.5rem, 6vw, 2.5rem);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .app__specialMenu-menu_img {
+    width: 100%;
+    max-width: 340px;
+  }
+
+  .app__specialMenu-menu_img-gallery img {
+    height: 120px;
+  }
+
+  .app__specialMenu-menu_img-gallery {
+    gap: 7px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .app__specialMenu_menu_items {
+    gap: 1rem;
+  }
+
+  .app__specialMenu-menu_heading {
+    font-size: clamp(1.3rem, 5vw, 1.8rem);
+    margin-bottom: 1.5rem;
+  }
 }
